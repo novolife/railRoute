@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = metroRoute
+TARGET = railRoute
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,16 +25,38 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    clicklabel.cpp \
+    drawpad.cpp \
+    exlabel.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    about.cpp
 
 HEADERS += \
-        mainwindow.h
+    clicklabel.h \
+    drawpad.h \
+    exlabel.h \
+        mainwindow.h \
+    mainwindow.h \
+    about.h
 
 FORMS += \
-        mainwindow.ui
+    drawpad.ui \
+    mainwindow.ui \
+    about.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
+
+RESOURCES += \
+    res.qrc
+
+TRANSLATIONS += \
+    translate_ZHS.ts \
+    translate_EN.ts

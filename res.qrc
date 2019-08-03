@@ -1,2 +1,22 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>res/img/logo/logo.ico</file>
+        <file>res/img/logo/logo.jpg</file>
+        <file>res/i18n/translate_EN.qm</file>
+        <file>res/i18n/translate_ZHS.qm</file>
+        <file>res/img/banner/github.png</file>
+        <file>res/img/banner/starup/0.jpg</file>
+        <file>res/img/banner/starup/3.jpg</file>
+        <file>res/img/banner/starup/4.jpg</file>
+        <file>res/img/banner/starup/5.jpg</file>
+        <file>res/img/icon/close.ico</file>
+        <file>res/img/icon/folder.ico</file>
+        <file>res/img/icon/new.ico</file>
+        <file>res/img/icon/redo.ico</file>
+        <file>res/img/icon/save.ico</file>
+        <file>res/img/icon/undo.ico</file>
+        <file>res/img/icon/exit.ico</file>
+        <file>res/img/icon/line.ico</file>
+        <file>res/img/icon/point.ico</file>
+    </qresource>
+</RCC>

@@ -13,10 +13,24 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    void printMessage(QString);
+    void OpenNewProject();
     ~MainWindow();
+    int langType = 0; // 0 = EN, 1 = ZHS
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void on_actionAbout_triggered();
+    void on_actionEnglish_triggered();
+    void on_actionZHS_triggered();
+    void on_actionNew_triggered();
+    void on_actionLoad_triggered();
+    void on_actionExit_triggered();
+    void on_newProject_clicked();
+    void on_loadProject_clicked();
+    void on_exitLabel_clicked();
 };
 
 #endif // MAINWINDOW_H

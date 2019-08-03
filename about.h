@@ -12,8 +12,11 @@ class about : public QWidget
     Q_OBJECT
 
 public:
-    explicit about(QWidget *parent = nullptr);
+    explicit about(int);
     ~about();
+
+private slots:
+    void on_githubLabel_clicked();
 
 private:
     Ui::about *ui;
