@@ -24,14 +24,15 @@ private slots:
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
     void on_actionDelete_triggered();
-    void on_lineButton_triggered(QAction *arg1);
-    void on_nodeButton_triggered(QAction *arg1);
-
     void on_actionAbout_triggered();
 
     void on_actionEnglish_triggered();
 
     void on_actionZHS_triggered();
+
+    void on_nodeButton_clicked();
+
+    void on_lineButton_clicked();
 
 private:
     Ui::DrawPad *ui;

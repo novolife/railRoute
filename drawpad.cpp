@@ -37,7 +37,7 @@ DrawPad::~DrawPad()
 
 void DrawPad::closeEvent(QCloseEvent *event)
 {
-    qDebug() << QString("triggered close event");
+    qDebug() << "triggered close event";
     event->accept();
 }
 
@@ -77,16 +77,6 @@ void DrawPad::on_actionDelete_triggered()
 
 }
 
-void DrawPad::on_lineButton_triggered(QAction *arg1)
-{
-
-}
-
-void DrawPad::on_nodeButton_triggered(QAction *arg1)
-{
-
-}
-
 void DrawPad::on_actionAbout_triggered()
 {
     about *aView = new about(this->langType);
@@ -109,4 +99,14 @@ void DrawPad::on_actionZHS_triggered()
     qApp->installTranslator(&zhsTranslator);
     this->ui->retranslateUi(this);
     this->langType = 1;
+}
+
+void DrawPad::on_nodeButton_clicked()
+{
+    qDebug() << static_cast <QPushButton*> (sender())->isChecked();
+}
+
+void DrawPad::on_lineButton_clicked()
+{
+    qDebug() << static_cast <QPushButton*> (sender())->isChecked();
 }
