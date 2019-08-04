@@ -12,7 +12,7 @@ class about : public QWidget
     Q_OBJECT
 
 public:
-    explicit about(int);
+    explicit about();
     ~about();
 
 private slots:

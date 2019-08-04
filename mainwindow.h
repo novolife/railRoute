@@ -15,8 +15,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     void printMessage(QString);
     void OpenNewProject();
+    void LoadProject();
     ~MainWindow();
-    int langType = 0; // 0 = EN, 1 = ZHS
 
 private:
     Ui::MainWindow *ui;

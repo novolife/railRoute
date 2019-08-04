@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
     clicklabel.cpp \
+    common.cpp \
     drawpad.cpp \
     exlabel.cpp \
         main.cpp \
@@ -36,6 +37,7 @@ SOURCES += \
 
 HEADERS += \
     clicklabel.h \
+    common.h \
     drawpad.h \
     exlabel.h \
         mainwindow.h \

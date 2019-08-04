@@ -12,9 +12,8 @@ class DrawPad : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit DrawPad(QWidget *parent = nullptr, int lT = 0);
+    explicit DrawPad(QWidget *parent = nullptr);
     ~DrawPad();
-    int langType = 0;
 
 private slots:
     void on_actionNew_triggered();

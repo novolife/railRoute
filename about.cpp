@@ -1,10 +1,14 @@
 #include "about.h"
 #include "ui_about.h"
+#include "common.h"
 
 #include <QtWidgets>
 #include <QDesktopServices>
 
-about::about(int langType) :
+/**
+ * @brief constructor of "about"
+ */
+about::about() :
     ui(new Ui::about)
 {
     ui->setupUi(this);
@@ -33,11 +37,17 @@ about::about(int langType) :
     setAttribute(Qt::WA_ShowModal, true);
 }
 
+/**
+ * @brief about::~about
+ */
 about::~about()
 {
     delete ui;
 }
 
+/**
+ * @brief slot function of the github label, open the github repo
+ */
 void about::on_githubLabel_clicked()
 {
     QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/Yu1Aragaki/railRoute")));

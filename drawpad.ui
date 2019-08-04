@@ -301,6 +301,9 @@
    </property>
   </action>
   <action name="actionUndo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/res/img/icon/undo.ico</normaloff>:/res/img/icon/undo.ico</iconset>
@@ -316,6 +319,9 @@
    </property>
   </action>
   <action name="actionRedo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/res/img/icon/redo.ico</normaloff>:/res/img/icon/redo.ico</iconset>
@@ -331,6 +337,9 @@
    </property>
   </action>
   <action name="actionDelete">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/res/img/icon/close.ico</normaloff>:/res/img/icon/close.ico</iconset>
