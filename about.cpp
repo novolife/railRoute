@@ -1,3 +1,12 @@
+/**
+ * @brief   about window of the program
+ * @file    about.cpp
+ * @author  Mahajana
+ * @version 1.0
+ * @date    2019/8/2
+ * @note    shows the information of the program
+ */
+
 #include "about.h"
 #include "ui_about.h"
 #include "common.h"

@@ -1,3 +1,11 @@
+/**
+ * @brief   entry of the program
+ * @file    main.cpp
+ * @author  Mahajana
+ * @version 1.0
+ * @date    2019/7/16
+ */
+
 #include "mainwindow.h"
 #include "common.h"
 

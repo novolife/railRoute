@@ -1,3 +1,12 @@
+/**
+ * @brief   a special label based on QLabel
+ * @file    exlabel.cpp
+ * @author  Mahajana
+ * @version 1.0
+ * @date    2019/8/2
+ * @note    this kind of label can be clicked and shows different styles when cursor in/out the label
+ */
+
 #include "exlabel.h"
 
 ExLabel::ExLabel(QWidget *parent) : QLabel(parent)

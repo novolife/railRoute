@@ -1,7 +1,13 @@
 /**
-  * @author Mahajana
-  * @todo   do the todos
-  */
+ * @brief   drawpad window of the program
+ * @file    drawpad.cpp
+ * @author  Mahajana
+ * @version 1.0
+ * @date    2019/8/2
+ * @note    the core part of this program, could draw graphs and can save in / load from files
+ * @todo    do the todos
+ */
+
 #include "drawpad.h"
 #include "ui_drawpad.h"
 #include "about.h"
@@ -158,7 +164,7 @@ void DrawPad::on_actionZHS_triggered()
  */
 void DrawPad::on_nodeButton_clicked()
 {
-    qDebug() << static_cast <QPushButton*> (sender())->isChecked();
+    qDebug() << (static_cast <QPushButton*> (sender()))->isChecked();
 }
 
 /**
@@ -167,5 +173,5 @@ void DrawPad::on_nodeButton_clicked()
  */
 void DrawPad::on_lineButton_clicked()
 {
-    qDebug() << static_cast <QPushButton*> (sender())->isChecked();
+    qDebug() << (static_cast <QPushButton*> (sender()))->isChecked();
 }

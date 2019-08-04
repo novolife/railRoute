@@ -1,7 +1,10 @@
 /**
-  * @author Mahajana
-  * @todo   do the todos
-  */
+ * @brief   start window of the program
+ * @file    mainwindow.cpp
+ * @author  Mahajana
+ * @version 1.0
+ * @date    2019/7/16
+ */
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -101,7 +104,7 @@ void MainWindow::on_actionEnglish_triggered()
 }
 
 /**
- * @brief slot function of "简体中文" in menubar, switch language into Chinese(Simplified)
+ * @brief slot function of "jiantizhongwen" in menubar, switch language into Chinese(Simplified)
  */
 void MainWindow::on_actionZHS_triggered()
 {
