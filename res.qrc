@@ -18,5 +18,8 @@
         <file>res/img/icon/exit.ico</file>
         <file>res/img/icon/line.ico</file>
         <file>res/img/icon/point.ico</file>
+        <file>res/img/opr/line.png</file>
+        <file>res/img/opr/node.png</file>
+        <file>res/img/opr/text.png</file>
     </qresource>
 </RCC>

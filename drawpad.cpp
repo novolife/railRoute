@@ -48,6 +48,9 @@ DrawPad::DrawPad(QWidget *parent) :
     DrawPadScene* scene = new DrawPadScene();
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     ui->graphicsView->setScene(scene);
+    ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", Qt::black));
+    ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", Qt::black));
+    ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", Qt::black));
 }
 
 /**
@@ -56,6 +59,27 @@ DrawPad::DrawPad(QWidget *parent) :
 DrawPad::~DrawPad()
 {
     delete ui;
+}
+
+/**
+ * @brief create Color ToolButton Icon
+ * @param imageFile
+ * @param color
+ * @return a icon
+ */
+QIcon DrawPad::createColorToolButtonIcon(const QString &imageFile, QColor color)
+{
+    QPixmap pixmap(50, 80);
+    pixmap.fill(Qt::transparent);
+    QPainter painter(&pixmap);
+    QPixmap image(imageFile);
+    // Draw icon centred horizontally on button.
+    QRect target(4, 0, 42, 43);
+    QRect source(0, 0, 42, 43);
+    painter.fillRect(QRect(0, 60, 50, 80), color);
+    painter.drawPixmap(target, image, source);
+
+    return QIcon(pixmap);
 }
 
 /**
@@ -169,7 +193,13 @@ void DrawPad::on_actionZHS_triggered()
  */
 void DrawPad::on_nodeButton_clicked()
 {
-    qDebug() << (static_cast <QPushButton*> (sender()))->isChecked();
+    if ((static_cast <QPushButton*> (sender()))->isChecked() == true)
+    {
+        if (ui->lineButton->isChecked() == true)
+        {
+            ui->lineButton->setChecked(false);
+        }
+    }
 }
 
 /**
@@ -178,5 +208,29 @@ void DrawPad::on_nodeButton_clicked()
  */
 void DrawPad::on_lineButton_clicked()
 {
-    qDebug() << (static_cast <QPushButton*> (sender()))->isChecked();
+    if ((static_cast <QPushButton*> (sender()))->isChecked() == true)
+    {
+        if (ui->nodeButton->isChecked() == true)
+        {
+            ui->nodeButton->setChecked(false);
+        }
+    }
+}
+
+void DrawPad::on_actionNodeColor_triggered()
+{
+    QColor color = QColorDialog::getColor();
+    ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", color));
+}
+
+void DrawPad::on_actionLineColor_triggered()
+{
+    QColor color = QColorDialog::getColor();
+    ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", color));
+}
+
+void DrawPad::on_actionTextColor_triggered()
+{
+    QColor color = QColorDialog::getColor();
+    ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", color));
 }

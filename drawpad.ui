@@ -12,8 +12,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
-    <height>300</height>
+    <width>600</width>
+    <height>480</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -253,6 +253,9 @@
    <addaction name="actionRedo"/>
    <addaction name="actionDelete"/>
    <addaction name="separator"/>
+   <addaction name="actionNodeColor"/>
+   <addaction name="actionLineColor"/>
+   <addaction name="actionTextColor"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -384,6 +387,30 @@
   <action name="actionZHS">
    <property name="text">
     <string>简体中文</string>
+   </property>
+  </action>
+  <action name="actionNodeColor">
+   <property name="text">
+    <string>NodeColor</string>
+   </property>
+   <property name="toolTip">
+    <string>select the color for nodes</string>
+   </property>
+  </action>
+  <action name="actionLineColor">
+   <property name="text">
+    <string>LineColor</string>
+   </property>
+   <property name="toolTip">
+    <string>select the color for lines</string>
+   </property>
+  </action>
+  <action name="actionTextColor">
+   <property name="text">
+    <string>TextColor</string>
+   </property>
+   <property name="toolTip">
+    <string>select the color for texts</string>
    </property>
   </action>
  </widget>

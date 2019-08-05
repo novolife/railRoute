@@ -13,6 +13,7 @@ class DrawPad : public QMainWindow
 
 public:
     explicit DrawPad(QWidget *parent = nullptr);
+    QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
     ~DrawPad();
 
 private slots:
@@ -28,6 +29,12 @@ private slots:
     void on_actionZHS_triggered();
     void on_nodeButton_clicked();
     void on_lineButton_clicked();
+
+    void on_actionNodeColor_triggered();
+
+    void on_actionLineColor_triggered();
+
+    void on_actionTextColor_triggered();
 
 private:
     Ui::DrawPad *ui;
