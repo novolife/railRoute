@@ -13,7 +13,6 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void printMessage(QString);
     void OpenNewProject();
     void LoadProject();
     ~MainWindow();

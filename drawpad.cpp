@@ -12,11 +12,12 @@
 #include "ui_drawpad.h"
 #include "about.h"
 #include "common.h"
+#include "drawpadscene.h"
 
 #include <QtWidgets>
 
 /**
- * @brief constructor of DdrawPad
+ * @brief constructor of DrawPad
  * @param parent
  */
 DrawPad::DrawPad(QWidget *parent) :
@@ -43,6 +44,10 @@ DrawPad::DrawPad(QWidget *parent) :
             break;
         }
     }
+
+    DrawPadScene* scene = new DrawPadScene();
+    scene->setSceneRect(QRectF(0, 0, 5000, 5000));
+    ui->graphicsView->setScene(scene);
 }
 
 /**

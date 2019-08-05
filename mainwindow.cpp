@@ -74,15 +74,6 @@ void MainWindow::LoadProject()
 }
 
 /**
- * @brief a temporary function for output info
- * @param s
- */
-void MainWindow::printMessage(QString s)
-{
-    qDebug() << s;
-}
-
-/**
  * @brief slot function of "About" in menubar, open a "about" window
  */
 void MainWindow::on_actionAbout_triggered()

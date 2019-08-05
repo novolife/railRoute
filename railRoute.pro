@@ -28,6 +28,7 @@ SOURCES += \
     clicklabel.cpp \
     common.cpp \
     drawpad.cpp \
+    drawpadscene.cpp \
     exlabel.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     clicklabel.h \
     common.h \
     drawpad.h \
+    drawpadscene.h \
     exlabel.h \
         mainwindow.h \
     mainwindow.h \

@@ -21,6 +21,7 @@
  */
 int main(int argc, char *argv[])
 {
+    Q_INIT_RESOURCE(res);
     QApplication a(argc, argv);
 
     QLocale locale;
