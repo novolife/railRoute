@@ -11,4 +11,4 @@
 /**
  * @brief language type of the program
  */
-int langType = 0; // 0 = EN, 1 = ZHS
+int langType = 0; // 0 = EN, 1 = ZHS, 2 = JP

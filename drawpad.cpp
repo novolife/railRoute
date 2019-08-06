@@ -35,11 +35,21 @@ DrawPad::DrawPad(QWidget *parent) :
             this->ui->retranslateUi(this);
             break;
         }
+
         case 1:
         {
             QTranslator zhsTranslator;
             zhsTranslator.load(":/res/i18n/translate_ZHS.qm");
             qApp->installTranslator(&zhsTranslator);
+            this->ui->retranslateUi(this);
+            break;
+        }
+
+        case 2:
+        {
+            QTranslator jpTranslator;
+            jpTranslator.load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(&jpTranslator);
             this->ui->retranslateUi(this);
             break;
         }

@@ -24,25 +24,32 @@ about::about() :
     switch (langType)
     {
         case 0:
-            {
-                QTranslator enTranslator;
-                enTranslator.load(":/res/i18n/translate_EN.qm");
-                qApp->installTranslator(&enTranslator);
-                this->ui->retranslateUi(this);
-                break;
-            }
+        {
+            QTranslator enTranslator;
+            enTranslator.load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(&enTranslator);
+            this->ui->retranslateUi(this);
+            break;
+        }
 
         case 1:
-            {
-                QTranslator zhsTranslator;
-                zhsTranslator.load(":/res/i18n/translate_ZHS.qm");
-                qApp->installTranslator(&zhsTranslator);
-                this->ui->retranslateUi(this);
-                break;
-            }
+        {
+            QTranslator zhsTranslator;
+            zhsTranslator.load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(&zhsTranslator);
+            this->ui->retranslateUi(this);
+            break;
+        }
 
+        case 2:
+        {
+            QTranslator jpTranslator;
+            jpTranslator.load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(&jpTranslator);
+            this->ui->retranslateUi(this);
+            break;
+        }
     }
-
     setAttribute(Qt::WA_ShowModal, true);
 }
 

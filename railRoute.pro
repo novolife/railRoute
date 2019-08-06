@@ -63,4 +63,5 @@ RESOURCES += \
 
 TRANSLATIONS += \
     translate_ZHS.ts \
-    translate_EN.ts
+    translate_EN.ts \
+    translate_JP.ts

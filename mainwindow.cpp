@@ -106,6 +106,15 @@ void MainWindow::on_actionZHS_triggered()
     langType = 1;
 }
 
+void MainWindow::on_actionJP_triggered()
+{
+    QTranslator jpTranslator;
+    jpTranslator.load(":/res/i18n/translate_JP.qm");
+    qApp->installTranslator(&jpTranslator);
+    this->ui->retranslateUi(this);
+    langType = 2;
+}
+
 /**
  * @brief slot function of "New" in menubar, jump to the OpenNewProject function
  */

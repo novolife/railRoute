@@ -25,10 +25,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QLocale locale;
-    if( locale.language() == QLocale::Chinese )
+    if ( locale.language() == QLocale::Chinese )
     {
-        qDebug() << "Chinese system";
         langType = 1;
+    }
+    else if (locale.language() == QLocale::Japanese)
+    {
+        langType = 2;
     }
     else
     {

@@ -30,6 +30,7 @@ private slots:
     void on_newProject_clicked();
     void on_loadProject_clicked();
     void on_exitLabel_clicked();
+    void on_actionJP_triggered();
 };
 
 #endif // MAINWINDOW_H
