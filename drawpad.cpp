@@ -13,6 +13,7 @@
 #include "about.h"
 #include "common.h"
 #include "drawpadscene.h"
+#include "drawpadview.h"
 
 #include <QtWidgets>
 
@@ -29,35 +30,44 @@ DrawPad::DrawPad(QWidget *parent) :
     {
         case 0:
         {
-            QTranslator enTranslator;
-            enTranslator.load(":/res/i18n/translate_EN.qm");
-            qApp->installTranslator(&enTranslator);
+            QTranslator translator;
+            translator.load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(&translator);
             this->ui->retranslateUi(this);
             break;
         }
 
         case 1:
         {
-            QTranslator zhsTranslator;
-            zhsTranslator.load(":/res/i18n/translate_ZHS.qm");
-            qApp->installTranslator(&zhsTranslator);
+            QTranslator translator;
+            translator.load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(&translator);
             this->ui->retranslateUi(this);
             break;
         }
 
         case 2:
         {
-            QTranslator jpTranslator;
-            jpTranslator.load(":/res/i18n/translate_JP.qm");
-            qApp->installTranslator(&jpTranslator);
+            QTranslator translator;
+            translator.load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(&translator);
             this->ui->retranslateUi(this);
             break;
         }
     }
 
-    /*DrawPadScene* scene = new DrawPadScene();
+    sceneScaleCombo = new QComboBox;
+    QStringList scales;
+    scales << "50%" << "75%" << "100%" << "125%" << "150%" << "100%";
+    sceneScaleCombo->addItems(scales);
+    sceneScaleCombo->setCurrentIndex(2);
+    connect(sceneScaleCombo, QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
+            this, &DrawPad::sceneScaleChanged);
+    ui->toolBar->addWidget(sceneScaleCombo);
+
+    DrawPadScene* scene = new DrawPadScene();
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
-    ui->graphicsView->setScene(scene);*/
+    ui->graphicsView->setScene(scene);
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", Qt::black));
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", Qt::black));
     ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", Qt::black));
@@ -69,6 +79,24 @@ DrawPad::DrawPad(QWidget *parent) :
 DrawPad::~DrawPad()
 {
     delete ui;
+}
+
+void DrawPad::ChangeComboBoxItem(qreal scale, int index)
+{
+    sceneScaleCombo->setCurrentIndex(index);
+    QString tempString = QString(QString::number(qRound(scale * 100)) + QString('%'));
+    qDebug() << tempString;
+    sceneScaleCombo->setItemText(index, tempString);
+}
+
+/**
+ * @brief DrawPad::sceneScaleChanged
+ * @param scale
+ */
+void DrawPad::sceneScaleChanged(const QString &scale)
+{
+    double newScale = scale.left(scale.indexOf("%")).toDouble() / 100.0;
+    ui->graphicsView->Zoom(newScale);
 }
 
 /**
@@ -178,9 +206,9 @@ void DrawPad::on_actionAbout_triggered()
  */
 void DrawPad::on_actionEnglish_triggered()
 {
-    QTranslator enTranslator;
-    enTranslator.load(":/res/i18n/translate_EN.qm");
-    qApp->installTranslator(&enTranslator);
+    QTranslator translator;
+    translator.load(":/res/i18n/translate_EN.qm");
+    qApp->installTranslator(&translator);
     this->ui->retranslateUi(this);
     langType = 0;
 }
@@ -190,11 +218,23 @@ void DrawPad::on_actionEnglish_triggered()
  */
 void DrawPad::on_actionZHS_triggered()
 {
-    QTranslator zhsTranslator;
-    zhsTranslator.load(":/res/i18n/translate_ZHS.qm");
-    qApp->installTranslator(&zhsTranslator);
+    QTranslator translator;
+    translator.load(":/res/i18n/translate_ZHS.qm");
+    qApp->installTranslator(&translator);
     this->ui->retranslateUi(this);
     langType = 1;
+}
+
+/**
+ * @brief slot function of "nihongo" in menubar, switch language into Japanese
+ */
+void DrawPad::on_actionJP_triggered()
+{
+    QTranslator translator;
+    translator.load(":/res/i18n/translate_JP.qm");
+    qApp->installTranslator(&translator);
+    this->ui->retranslateUi(this);
+    langType = 2;
 }
 
 /**

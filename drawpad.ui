@@ -188,13 +188,22 @@
        </widget>
       </item>
       <item>
-       <widget class="QGraphicsView" name="graphicsView">
+       <widget class="DrawPadView" name="graphicsView">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustIgnored</enum>
+        </property>
         <property name="sceneRect">
          <rectf>
           <x>0.000000000000000</x>
           <y>0.000000000000000</y>
-          <width>5000.000000000000000</width>
-          <height>5000.000000000000000</height>
+          <width>0.000000000000000</width>
+          <height>0.000000000000000</height>
          </rectf>
         </property>
         <property name="alignment">
@@ -247,6 +256,7 @@
      </property>
      <addaction name="actionEnglish"/>
      <addaction name="actionZHS"/>
+     <addaction name="actionJP"/>
     </widget>
     <addaction name="actionAbout"/>
     <addaction name="menuLanguage"/>
@@ -283,6 +293,7 @@
    <addaction name="actionNodeColor"/>
    <addaction name="actionLineColor"/>
    <addaction name="actionTextColor"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -440,7 +451,19 @@
     <string>select the color for texts</string>
    </property>
   </action>
+  <action name="actionJP">
+   <property name="text">
+    <string>日本語</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DrawPadView</class>
+   <extends>QGraphicsView</extends>
+   <header>drawpadview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="res.qrc"/>
  </resources>

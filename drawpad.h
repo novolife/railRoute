@@ -2,6 +2,7 @@
 #define DRAWPAD_H
 
 #include <QMainWindow>
+#include <QComboBox>
 
 namespace Ui {
 class DrawPad;
@@ -14,8 +15,12 @@ class DrawPad : public QMainWindow
 public:
     explicit DrawPad(QWidget *parent = nullptr);
     QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
+    void sceneScaleChanged(const QString &scale);
+    void ChangeComboBoxItem(qreal scale, int index);
     ~DrawPad();
 
+    QColor nodeColor = Qt::black;
+    QColor lineColor = Qt::black;
     QColor textColor = Qt::black;
 
 private slots:
@@ -29,6 +34,7 @@ private slots:
     void on_actionAbout_triggered();
     void on_actionEnglish_triggered();
     void on_actionZHS_triggered();
+    void on_actionJP_triggered();
     void on_nodeButton_clicked();
     void on_lineButton_clicked();
     void on_actionNodeColor_triggered();
@@ -37,6 +43,7 @@ private slots:
 
 private:
     Ui::DrawPad *ui;
+    QComboBox* sceneScaleCombo;
 
 protected:
     void closeEvent(QCloseEvent *event);

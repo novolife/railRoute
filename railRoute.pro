@@ -29,6 +29,7 @@ SOURCES += \
     common.cpp \
     drawpad.cpp \
     drawpadscene.cpp \
+    drawpadview.cpp \
     exlabel.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     common.h \
     drawpad.h \
     drawpadscene.h \
+    drawpadview.h \
     exlabel.h \
         mainwindow.h \
     mainwindow.h \
