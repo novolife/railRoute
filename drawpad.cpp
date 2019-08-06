@@ -55,9 +55,9 @@ DrawPad::DrawPad(QWidget *parent) :
         }
     }
 
-    DrawPadScene* scene = new DrawPadScene();
+    /*DrawPadScene* scene = new DrawPadScene();
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
-    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setScene(scene);*/
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", Qt::black));
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", Qt::black));
     ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", Qt::black));

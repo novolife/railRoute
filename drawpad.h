@@ -16,6 +16,8 @@ public:
     QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
     ~DrawPad();
 
+    QColor textColor = Qt::black;
+
 private slots:
     void on_actionNew_triggered();
     void on_actionSave_triggered();
@@ -29,11 +31,8 @@ private slots:
     void on_actionZHS_triggered();
     void on_nodeButton_clicked();
     void on_lineButton_clicked();
-
     void on_actionNodeColor_triggered();
-
     void on_actionLineColor_triggered();
-
     void on_actionTextColor_triggered();
 
 private:
