@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QComboBox>
+#include "drawpadscene.h"
 
 namespace Ui {
 class DrawPad;
@@ -44,6 +45,7 @@ private slots:
 private:
     Ui::DrawPad *ui;
     QComboBox* sceneScaleCombo;
+    DrawPadScene *scene;
 
 protected:
     void closeEvent(QCloseEvent *event);

@@ -65,7 +65,7 @@ DrawPad::DrawPad(QWidget *parent) :
             this, &DrawPad::sceneScaleChanged);
     ui->toolBar->addWidget(sceneScaleCombo);
 
-    DrawPadScene* scene = new DrawPadScene();
+    scene = new DrawPadScene();
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     ui->graphicsView->setScene(scene);
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", Qt::black));
@@ -81,6 +81,11 @@ DrawPad::~DrawPad()
     delete ui;
 }
 
+/**
+ * @brief reset the selected scale
+ * @param scale
+ * @param index
+ */
 void DrawPad::ChangeComboBoxItem(qreal scale, int index)
 {
     sceneScaleCombo->setCurrentIndex(index);
@@ -267,18 +272,27 @@ void DrawPad::on_lineButton_clicked()
     }
 }
 
+/**
+ * @brief select the color for node
+ */
 void DrawPad::on_actionNodeColor_triggered()
 {
     QColor color = QColorDialog::getColor();
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", color));
 }
 
+/**
+ * @brief select the color for line
+ */
 void DrawPad::on_actionLineColor_triggered()
 {
     QColor color = QColorDialog::getColor();
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", color));
 }
 
+/**
+ * @brief select the color for text
+ */
 void DrawPad::on_actionTextColor_triggered()
 {
     QColor color = QColorDialog::getColor();
