@@ -22,5 +22,8 @@
         <file>res/img/opr/node.png</file>
         <file>res/img/opr/text.png</file>
         <file>res/i18n/translate_JP.qm</file>
+        <file>res/i18n/qt_zh_CN.qm</file>
+        <file>res/i18n/qt_en.qm</file>
+        <file>res/i18n/qt_ja.qm</file>
     </qresource>
 </RCC>

@@ -43,6 +43,7 @@ private slots:
     void on_actionTextColor_triggered();
 
 private:
+    inline void dialogTranslate();
     Ui::DrawPad *ui;
     QComboBox* sceneScaleCombo;
     DrawPadScene *scene;

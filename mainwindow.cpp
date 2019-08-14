@@ -30,19 +30,41 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     qDebug() << this->frameGeometry().width() << this->frameGeometry().height();
-    if (langType == 1)
+
+    switch (langType)
     {
-        QTranslator zhsTranslator;
-        zhsTranslator.load(":/res/i18n/translate_ZHS.qm");
-        qApp->installTranslator(&zhsTranslator);
-        this->ui->retranslateUi(this);
-    }
-    else if (langType == 0)
-    {
-        QTranslator enTranslator;
-        enTranslator.load(":/res/i18n/translate_EN.qm");
-        qApp->installTranslator(&enTranslator);
-        this->ui->retranslateUi(this);
+        case 0:
+        {
+            QTranslator translator;
+            translator.load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(&translator);
+            this->ui->retranslateUi(this);
+            translator.load(":/res/i18n/qt_en.qm");
+            qApp->installTranslator(&translator);
+            break;
+        }
+
+        case 1:
+        {
+            QTranslator translator;
+            translator.load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(&translator);
+            this->ui->retranslateUi(this);
+            translator.load(":/res/i18n/qt_zh_CN.qm");
+            qApp->installTranslator(&translator);
+            break;
+        }
+
+        case 2:
+        {
+            QTranslator translator;
+            translator.load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(&translator);
+            this->ui->retranslateUi(this);
+            translator.load(":/res/i18n/qt_ja.qm");
+            qApp->installTranslator(&translator);
+            break;
+        }
     }
 }
 
