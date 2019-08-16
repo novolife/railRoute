@@ -26,6 +26,9 @@ DrawPad::DrawPad(QWidget *parent) :
     ui(new Ui::DrawPad)
 {
     ui->setupUi(this);
+    QIcon *ico = new QIcon(":/res/img/logo/logo.ico");
+    this->setWindowIcon(*ico);
+
     switch (langType)
     {
         case 0:
