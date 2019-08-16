@@ -65,13 +65,13 @@ DrawPad::DrawPad(QWidget *parent) :
         }
     }
 
-    sceneScaleCombo = new QComboBox;
+    sceneScaleCombo = new QComboBox();
     QStringList scales;
     scales << "50%" << "75%" << "100%" << "125%" << "150%" << "100%";
     sceneScaleCombo->addItems(scales);
     sceneScaleCombo->setCurrentIndex(2);
     connect(sceneScaleCombo, QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
-            this, &DrawPad::sceneScaleChanged);
+            this, &DrawPad::SceneScaleChanged);
     ui->toolBar->addWidget(sceneScaleCombo);
 
     scene = new DrawPadScene();
@@ -99,7 +99,6 @@ void DrawPad::ChangeComboBoxItem(qreal scale, int index)
 {
     sceneScaleCombo->setCurrentIndex(index);
     QString tempString = QString(QString::number(qRound(scale * 100)) + QString('%'));
-    qDebug() << tempString;
     sceneScaleCombo->setItemText(index, tempString);
 }
 
@@ -107,7 +106,7 @@ void DrawPad::ChangeComboBoxItem(qreal scale, int index)
  * @brief change scale from the combo box
  * @param scale
  */
-void DrawPad::sceneScaleChanged(const QString &scale)
+void DrawPad::SceneScaleChanged(const QString &scale)
 {
     double newScale = scale.left(scale.indexOf("%")).toDouble() / 100.0;
     ui->graphicsView->Zoom(newScale);
@@ -324,7 +323,7 @@ inline void DrawPad::dialogTranslate()
 void DrawPad::on_actionNodeColor_triggered()
 {
     dialogTranslate();
-    QColor color = QColorDialog::getColor(nodeColor);
+    QColor color = QColorDialog::getColor(nodeColor, this);
     nodeColor = color;
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", color));
 }
@@ -335,7 +334,7 @@ void DrawPad::on_actionNodeColor_triggered()
 void DrawPad::on_actionLineColor_triggered()
 {
     dialogTranslate();
-    QColor color = QColorDialog::getColor(lineColor);
+    QColor color = QColorDialog::getColor(lineColor, this);
     lineColor = color;
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", color));
 }

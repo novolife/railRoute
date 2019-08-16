@@ -16,7 +16,7 @@ class DrawPad : public QMainWindow
 public:
     explicit DrawPad(QWidget *parent = nullptr);
     QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
-    void sceneScaleChanged(const QString &scale);
+    void SceneScaleChanged(const QString &scale);
     void ChangeComboBoxItem(qreal scale, int index);
     ~DrawPad();
 
