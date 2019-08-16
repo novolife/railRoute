@@ -51,7 +51,7 @@ void DrawPadView::Zoom(qreal newScale)
 {
     qDebug() << newScale;
 
-    QWidget* centralParent = static_cast<QWidget*>(parentWidget());
+    QWidget *centralParent = static_cast<QWidget*>(parentWidget());
     DrawPad *padParent = static_cast<DrawPad*>(centralParent->parentWidget());
     padParent->ChangeComboBoxItem(newScale, 5);
 

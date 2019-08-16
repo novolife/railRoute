@@ -101,7 +101,7 @@ void DrawPad::ChangeComboBoxItem(qreal scale, int index)
 }
 
 /**
- * @brief DrawPad::sceneScaleChanged
+ * @brief change scale from the combo box
  * @param scale
  */
 void DrawPad::sceneScaleChanged(const QString &scale)
@@ -284,32 +284,32 @@ void DrawPad::on_lineButton_clicked()
     }
 }
 
+/**
+ * @brief a inline function used to translate dialogs(eg. QColorDialog)
+ */
 inline void DrawPad::dialogTranslate()
 {
+    QTranslator *translator = new QTranslator();
     switch (langType)
     {
         case 0:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/qt_en.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/qt_en.qm");
+            qApp->installTranslator(translator);
             break;
         }
 
         case 1:
         {
-            QTranslator translator;
-            qDebug() << langType;
-            translator.load(":/res/i18n/qt_zh_CN.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/qt_zh_CN.qm");
+            qApp->installTranslator(translator);
             break;
         }
 
         case 2:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/qt_ja.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/qt_ja.qm");
+            qApp->installTranslator(translator);
             break;
         }
     }
@@ -321,7 +321,8 @@ inline void DrawPad::dialogTranslate()
 void DrawPad::on_actionNodeColor_triggered()
 {
     dialogTranslate();
-    QColor color = QColorDialog::getColor();
+    QColor color = QColorDialog::getColor(nodeColor);
+    nodeColor = color;
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", color));
 }
 
@@ -330,14 +331,9 @@ void DrawPad::on_actionNodeColor_triggered()
  */
 void DrawPad::on_actionLineColor_triggered()
 {
-    QColorDialog *colorBox = new QColorDialog();
-
-    QTranslator translator;
-    translator.load(":/res/i18n/qt_zh_CN.qm");
-    qApp->installTranslator(&translator);
-
-    QColor color = colorBox->getColor();
-
+    dialogTranslate();
+    QColor color = QColorDialog::getColor(lineColor);
+    lineColor = color;
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", color));
 }
 
@@ -347,6 +343,7 @@ void DrawPad::on_actionLineColor_triggered()
 void DrawPad::on_actionTextColor_triggered()
 {
     dialogTranslate();
-    QColor color = QColorDialog::getColor();
+    QColor color = QColorDialog::getColor(textColor);
+    textColor = color;
     ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", color));
 }
