@@ -51,6 +51,10 @@
   <property name="windowTitle">
    <string>railRoute - Welcome</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/res/img/logo/logo.ico</normaloff>:/res/img/logo/logo.ico</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -58,7 +62,7 @@
    <locale language="English" country="UnitedKingdom"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="banner">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -84,7 +88,7 @@ background-color: rgb(255, 255, 255);</string>
      <set>Qt::NoTextInteraction</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="railRoute">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -234,7 +238,7 @@ background-color: rgb(255, 255, 255);</string>
      <set>Qt::NoTextInteraction</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="background">
     <property name="geometry">
      <rect>
       <x>193</x>
@@ -250,9 +254,9 @@ background-color: rgb(255, 255, 255);</string>
      <string/>
     </property>
    </widget>
-   <zorder>label_3</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
+   <zorder>background</zorder>
+   <zorder>banner</zorder>
+   <zorder>railRoute</zorder>
    <zorder>newProject</zorder>
    <zorder>loadProject</zorder>
    <zorder>exitLabel</zorder>

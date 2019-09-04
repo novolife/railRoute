@@ -1,4 +1,19 @@
 /**
+ *    A program which can calculate a longest path of a rail system.
+ *    Copyright (C) 2019  J. HUANG
+ *
+ *    This program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ */
+
+/**
  * @brief   start window of the program
  * @file    mainwindow.cpp
  * @author  Mahajana
@@ -30,39 +45,38 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     qDebug() << this->frameGeometry().width() << this->frameGeometry().height();
+    QTranslator *translator = new QTranslator();
 
     switch (langType)
     {
         case 0:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/translate_EN.qm");
-            qApp->installTranslator(&translator);
+
+            translator->load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator.load(":/res/i18n/qt_en.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/qt_en.qm");
+            qApp->installTranslator(translator);
             break;
         }
 
         case 1:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/translate_ZHS.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator.load(":/res/i18n/qt_zh_CN.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/qt_zh_CN.qm");
+            qApp->installTranslator(translator);
             break;
         }
 
         case 2:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/translate_JP.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator.load(":/res/i18n/qt_ja.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/qt_ja.qm");
+            qApp->installTranslator(translator);
             break;
         }
     }
@@ -128,6 +142,9 @@ void MainWindow::on_actionZHS_triggered()
     langType = 1;
 }
 
+/**
+ * @brief MainWindow::on_actionJP_triggered
+ */
 void MainWindow::on_actionJP_triggered()
 {
     QTranslator jpTranslator;
