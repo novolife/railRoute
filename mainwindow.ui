@@ -111,6 +111,9 @@ background-color: rgb(255, 255, 255);</string>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
+    <property name="textInteractionFlags">
+     <set>Qt::NoTextInteraction</set>
+    </property>
    </widget>
    <widget class="ExLabel" name="newProject">
     <property name="geometry">
@@ -337,6 +340,9 @@ background-color: rgb(255, 255, 255);</string>
    <property name="toolTip">
     <string>Create a new project</string>
    </property>
+   <property name="statusTip">
+    <string>Create a new project</string>
+   </property>
    <property name="font">
     <font>
      <family>Arial</family>
@@ -349,12 +355,15 @@ background-color: rgb(255, 255, 255);</string>
   <action name="actionLoad">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/res/img/icon/folder.ico</normaloff>:/res/img/icon/folder.ico</iconset>
+     <normaloff>:/res/img/icon/open.ico</normaloff>:/res/img/icon/open.ico</iconset>
    </property>
    <property name="text">
     <string>Load</string>
    </property>
    <property name="toolTip">
+    <string>Open a project</string>
+   </property>
+   <property name="statusTip">
     <string>Open a project</string>
    </property>
    <property name="font">
@@ -375,6 +384,9 @@ background-color: rgb(255, 255, 255);</string>
     <string>Exit</string>
    </property>
    <property name="toolTip">
+    <string>Exit the program</string>
+   </property>
+   <property name="statusTip">
     <string>Exit the program</string>
    </property>
    <property name="font">

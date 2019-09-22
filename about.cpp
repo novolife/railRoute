@@ -83,3 +83,40 @@ void about::on_githubLabel_clicked()
 {
     QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/Yu1Aragaki/railRoute")));
 }
+
+void about::on_zhihuLabel_clicked()
+{
+    QDesktopServices::openUrl(QUrl(QLatin1String("https://zhuanlan.zhihu.com/p/51794962")));
+}
+
+void about::on_copyrightButton_clicked()
+{
+    QMessageBox *c = new QMessageBox();
+    c->setModal(true);
+    c->setWindowTitle(tr("COPYRIGHT"));
+    c->setText(tr("IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING "
+               "WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS "
+               "THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY "
+               "GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE "
+               "USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF "
+               "DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD "
+               "PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), "
+               "EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF "
+               "SUCH DAMAGES. "));
+    c->exec();
+}
+
+void about::on_warrantyButton_clicked()
+{
+    QMessageBox *w = new QMessageBox();
+    w->setModal(true);
+    w->setWindowTitle(tr("WARRANTY"));
+    w->setText(tr("THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. "
+               "EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES "
+               "PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, "
+               "INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS "
+               "FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF "
+               "THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF "
+               "ALL NECESSARY SERVICING, REPAIR OR CORRECTION. "));
+    w->exec();
+}

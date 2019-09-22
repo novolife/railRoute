@@ -92,7 +92,7 @@
           </property>
           <property name="icon">
            <iconset resource="res.qrc">
-            <normaloff>:/res/img/icon/point.ico</normaloff>:/res/img/icon/point.ico</iconset>
+            <normaloff>:/res/img/icon/node.ico</normaloff>:/res/img/icon/node.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -284,7 +284,6 @@
    <addaction name="actionNew"/>
    <addaction name="actionLoad"/>
    <addaction name="actionSave"/>
-   <addaction name="actionExit"/>
    <addaction name="separator"/>
    <addaction name="actionUndo"/>
    <addaction name="actionRedo"/>
@@ -328,7 +327,7 @@
   <action name="actionLoad">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/res/img/icon/folder.ico</normaloff>:/res/img/icon/folder.ico</iconset>
+     <normaloff>:/res/img/icon/open.ico</normaloff>:/res/img/icon/open.ico</iconset>
    </property>
    <property name="text">
     <string>Open a project</string>
@@ -389,12 +388,15 @@
    </property>
   </action>
   <action name="actionDelete">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/res/img/icon/close.ico</normaloff>:/res/img/icon/close.ico</iconset>
+     <normaloff>:/res/img/icon/delete.ico</normaloff>:/res/img/icon/delete.ico</iconset>
    </property>
    <property name="text">
     <string>Delete</string>

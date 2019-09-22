@@ -1,23 +1,18 @@
 <RCC>
     <qresource prefix="/">
         <file>res/img/logo/logo.ico</file>
-        <file>res/img/logo/logo.jpg</file>
         <file>res/i18n/translate_EN.qm</file>
         <file>res/i18n/translate_ZHS.qm</file>
-        <file>res/img/banner/github.png</file>
         <file>res/img/banner/starup/0.jpg</file>
         <file>res/img/banner/starup/3.jpg</file>
         <file>res/img/banner/starup/4.jpg</file>
         <file>res/img/banner/starup/5.jpg</file>
-        <file>res/img/icon/close.ico</file>
-        <file>res/img/icon/folder.ico</file>
         <file>res/img/icon/new.ico</file>
         <file>res/img/icon/redo.ico</file>
         <file>res/img/icon/save.ico</file>
         <file>res/img/icon/undo.ico</file>
         <file>res/img/icon/exit.ico</file>
         <file>res/img/icon/line.ico</file>
-        <file>res/img/icon/point.ico</file>
         <file>res/img/opr/line.png</file>
         <file>res/img/opr/node.png</file>
         <file>res/img/opr/text.png</file>
@@ -25,5 +20,13 @@
         <file>res/i18n/qt_zh_CN.qm</file>
         <file>res/i18n/qt_en.qm</file>
         <file>res/i18n/qt_ja.qm</file>
+        <file>res/img/logo/logo.png</file>
+        <file>res/img/logo/zhihu.png</file>
+        <file>res/img/logo/github.png</file>
+        <file>res/img/logo/zhihu_white.png</file>
+        <file>res/img/icon/delete.ico</file>
+        <file>res/img/icon/file.ico</file>
+        <file>res/img/icon/node.ico</file>
+        <file>res/img/icon/open.ico</file>
     </qresource>
 </RCC>

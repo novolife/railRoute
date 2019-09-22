@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>574</width>
-    <height>312</height>
+    <width>486</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -44,23 +44,8 @@
     <number>3</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
      <property name="spacing">
-      <number>3</number>
-     </property>
-     <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -86,7 +71,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">image: url(:/res/img/logo/logo.jpg);</string>
+          <string notr="true">image: url(:/res/img/logo/logo.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -226,7 +211,7 @@
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;railRoute&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; is a program which could calculate the longest (maybe) path of a rail system.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;railRoute Copyright (C) 2019 J. HUANG&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;This program comes with &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;ABSOLUTELY NO WARRANTY&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;; for details type `&lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;show w&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;'.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;This is free software, and you are welcome to redistribute it.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;under certain conditions; type `&lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;show c&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;' for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;railRoute&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; is a program which could calculate the longest (maybe) path of a rail system.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;railRoute&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; Copyright (C) 2019 J. HUANG&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;This program comes with &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;ABSOLUTELY NO WARRANTY&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;; for details press `&lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;WARRANTY&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;'.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;This is free software, and you are welcome to redistribute it.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;under certain conditions; press `&lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;COPYRIGHT&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;' for details.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;To see the source code or the algorithm(&lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;English&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;), please click '&lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Github&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;'.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;To see the algorithm(&lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Simplified Chinese&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;), please click '&lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;知乎&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;'(blue logo)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse</set>
@@ -234,29 +219,82 @@
       </widget>
      </item>
      <item>
-      <widget class="clickLabel" name="githubLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>3</number>
        </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
+       <property name="topMargin">
+        <number>3</number>
        </property>
-       <property name="toolTip">
-        <string>Github Repository</string>
+       <property name="bottomMargin">
+        <number>3</number>
        </property>
-       <property name="statusTip">
-        <string>Github Repository</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">image: url(:/res/img/banner/github.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
+       <item>
+        <widget class="clickLabel" name="zhihuLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/res/img/logo/zhihu_white.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QPushButton" name="warrantyButton">
+           <property name="text">
+            <string>WARRANTY</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="copyrightButton">
+           <property name="text">
+            <string>COPYRIGHT</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="clickLabel" name="githubLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>Github Repository</string>
+         </property>
+         <property name="statusTip">
+          <string>Github Repository</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(://res/img/logo/github.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
