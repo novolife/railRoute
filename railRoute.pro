@@ -32,6 +32,7 @@ SOURCES += \
     drawpadscene.cpp \
     drawpadview.cpp \
     exlabel.cpp \
+    licensedialog.cpp \
         main.cpp \
         mainwindow.cpp \
     main.cpp \
@@ -45,12 +46,14 @@ HEADERS += \
     drawpadscene.h \
     drawpadview.h \
     exlabel.h \
+    licensedialog.h \
         mainwindow.h \
     mainwindow.h \
     about.h
 
 FORMS += \
     drawpad.ui \
+    licensedialog.ui \
     mainwindow.ui \
     about.ui
 

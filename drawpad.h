@@ -59,6 +59,7 @@ private slots:
 
 private:
     inline void dialogTranslate();
+    inline void drawpadRetranslate();
     Ui::DrawPad *ui;
     QComboBox* sceneScaleCombo;
     DrawPadScene *scene;

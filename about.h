@@ -17,6 +17,7 @@
 #define ABOUT_H
 
 #include <QWidget>
+#include "licensedialog.h"
 
 namespace Ui {
 class about;

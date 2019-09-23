@@ -51,12 +51,9 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         case 0:
         {
-
             translator->load(":/res/i18n/translate_EN.qm");
             qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator->load(":/res/i18n/qt_en.qm");
-            qApp->installTranslator(translator);
             break;
         }
 
@@ -65,8 +62,6 @@ MainWindow::MainWindow(QWidget *parent) :
             translator->load(":/res/i18n/translate_ZHS.qm");
             qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator->load(":/res/i18n/qt_zh_CN.qm");
-            qApp->installTranslator(translator);
             break;
         }
 
@@ -75,8 +70,6 @@ MainWindow::MainWindow(QWidget *parent) :
             translator->load(":/res/i18n/translate_JP.qm");
             qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator->load(":/res/i18n/qt_ja.qm");
-            qApp->installTranslator(translator);
             break;
         }
     }

@@ -42,38 +42,30 @@ DrawPad::DrawPad(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QTranslator *translator = new QTranslator();
     switch (langType)
     {
         case 0:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/translate_EN.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator.load(":/res/i18n/qt_en.qm");
-            qApp->installTranslator(&translator);
             break;
         }
 
         case 1:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/translate_ZHS.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator.load(":/res/i18n/qt_zh_CN.qm");
-            qApp->installTranslator(&translator);
             break;
         }
 
         case 2:
         {
-            QTranslator translator;
-            translator.load(":/res/i18n/translate_JP.qm");
-            qApp->installTranslator(&translator);
+            translator->load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(translator);
             this->ui->retranslateUi(this);
-            translator.load(":/res/i18n/qt_ja.qm");
-            qApp->installTranslator(&translator);
             break;
         }
     }
@@ -236,8 +228,6 @@ void DrawPad::on_actionEnglish_triggered()
     translator.load(":/res/i18n/translate_EN.qm");
     qApp->installTranslator(&translator);
     this->ui->retranslateUi(this);
-    translator.load(":/res/i18n/qt_en.qm");
-    qApp->installTranslator(&translator);
     langType = 0;
 }
 
@@ -250,8 +240,6 @@ void DrawPad::on_actionZHS_triggered()
     translator.load(":/res/i18n/translate_ZHS.qm");
     qApp->installTranslator(&translator);
     this->ui->retranslateUi(this);
-    translator.load(":/res/i18n/qt_zh_CN.qm");
-    qApp->installTranslator(&translator);
     langType = 1;
 }
 
@@ -264,8 +252,6 @@ void DrawPad::on_actionJP_triggered()
     translator.load(":/res/i18n/translate_JP.qm");
     qApp->installTranslator(&translator);
     this->ui->retranslateUi(this);
-    translator.load(":/res/i18n/qt_ja.qm");
-    qApp->installTranslator(&translator);
     langType = 2;
 }
 
@@ -311,6 +297,7 @@ inline void DrawPad::dialogTranslate()
         {
             translator->load(":/res/i18n/qt_en.qm");
             qApp->installTranslator(translator);
+            this->ui->retranslateUi(this);
             break;
         }
 
@@ -318,6 +305,7 @@ inline void DrawPad::dialogTranslate()
         {
             translator->load(":/res/i18n/qt_zh_CN.qm");
             qApp->installTranslator(translator);
+            this->ui->retranslateUi(this);
             break;
         }
 
@@ -325,6 +313,38 @@ inline void DrawPad::dialogTranslate()
         {
             translator->load(":/res/i18n/qt_ja.qm");
             qApp->installTranslator(translator);
+            this->ui->retranslateUi(this);
+            break;
+        }
+    }
+}
+
+inline void DrawPad::drawpadRetranslate()
+{
+    QTranslator *translator = new QTranslator();
+    switch (langType)
+    {
+        case 0:
+        {
+            translator->load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(translator);
+            this->ui->retranslateUi(this);
+            break;
+        }
+
+        case 1:
+        {
+            translator->load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(translator);
+            this->ui->retranslateUi(this);
+            break;
+        }
+
+        case 2:
+        {
+            translator->load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(translator);
+            this->ui->retranslateUi(this);
             break;
         }
     }
@@ -337,9 +357,9 @@ void DrawPad::on_actionNodeColor_triggered()
 {
     QColorDialog *colorDialog = new QColorDialog();
     dialogTranslate();
-    QColor color = colorDialog->getColor(nodeColor, this);
-    nodeColor = color;
-    ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", color));
+    nodeColor = colorDialog->getColor(nodeColor, this);
+    ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", nodeColor));
+    drawpadRetranslate();
 }
 
 /**
@@ -347,10 +367,11 @@ void DrawPad::on_actionNodeColor_triggered()
  */
 void DrawPad::on_actionLineColor_triggered()
 {
+    QColorDialog *colorDialog = new QColorDialog();
     dialogTranslate();
-    QColor color = QColorDialog::getColor(lineColor, this);
-    lineColor = color;
-    ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", color));
+    lineColor = colorDialog->getColor(lineColor, this);
+    ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", lineColor));
+    drawpadRetranslate();
 }
 
 /**
@@ -358,8 +379,9 @@ void DrawPad::on_actionLineColor_triggered()
  */
 void DrawPad::on_actionTextColor_triggered()
 {
+    QColorDialog *colorDialog = new QColorDialog();
     dialogTranslate();
-    QColor color = QColorDialog::getColor(textColor);
-    textColor = color;
-    ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", color));
+    textColor = colorDialog->getColor(textColor);
+    ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", textColor));
+    drawpadRetranslate();
 }
