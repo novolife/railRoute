@@ -41,8 +41,6 @@ DrawPad::DrawPad(QWidget *parent) :
     ui(new Ui::DrawPad)
 {
     ui->setupUi(this);
-    QIcon *ico = new QIcon(":/res/img/logo/logo.ico");
-    this->setWindowIcon(*ico);
 
     switch (langType)
     {
@@ -337,8 +335,9 @@ inline void DrawPad::dialogTranslate()
  */
 void DrawPad::on_actionNodeColor_triggered()
 {
+    QColorDialog *colorDialog = new QColorDialog();
     dialogTranslate();
-    QColor color = QColorDialog::getColor(nodeColor, this);
+    QColor color = colorDialog->getColor(nodeColor, this);
     nodeColor = color;
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", color));
 }

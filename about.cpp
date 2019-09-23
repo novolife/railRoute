@@ -76,6 +76,34 @@ about::~about()
     delete ui;
 }
 
+inline void about::dialogTranslate()
+{
+    QTranslator *translator = new QTranslator();
+    switch (langType)
+    {
+        case 0:
+        {
+            translator->load(":/res/i18n/translate_EN.qm");
+            qApp->installTranslator(translator);
+            break;
+        }
+
+        case 1:
+        {
+            translator->load(":/res/i18n/translate_ZHS.qm");
+            qApp->installTranslator(translator);
+            break;
+        }
+
+        case 2:
+        {
+            translator->load(":/res/i18n/translate_JP.qm");
+            qApp->installTranslator(translator);
+            break;
+        }
+    }
+}
+
 /**
  * @brief slot function of the github label, open the github repo
  */
@@ -84,39 +112,33 @@ void about::on_githubLabel_clicked()
     QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/Yu1Aragaki/railRoute")));
 }
 
+/**
+ * @brief about::on_zhihuLabel_clicked
+ */
 void about::on_zhihuLabel_clicked()
 {
     QDesktopServices::openUrl(QUrl(QLatin1String("https://zhuanlan.zhihu.com/p/51794962")));
 }
 
-void about::on_copyrightButton_clicked()
+/**
+ * @brief about::on_licenseButton_clicked
+ */
+void about::on_licenseButton_clicked()
 {
-    QMessageBox *c = new QMessageBox();
-    c->setModal(true);
-    c->setWindowTitle(tr("COPYRIGHT"));
-    c->setText(tr("IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING "
-               "WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS "
-               "THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY "
-               "GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE "
-               "USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF "
-               "DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD "
-               "PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), "
-               "EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF "
-               "SUCH DAMAGES. "));
-    c->exec();
-}
+    QMessageBox *msgBox = new QMessageBox();
+    dialogTranslate();
+    msgBox->setWindowTitle(tr("LICENSE"));
+    msgBox->setWindowIcon(QIcon(":/res/img/logo/logo.ico"));
+    msgBox->setText(tr("This program is free software: you can redistribute it and/or modify """
+                  "it under the terms of the GNU General Public License as published by "
+                  "the Free Software Foundation, either version 3 of the License, or "
+                  "(at your option) any later version.\n\n"
+                  "This program is distributed in the hope that it will be useful,"
+                  "but WITHOUT ANY WARRANTY; without even the implied warranty of"
+                  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+                  "GNU General Public License for more details.\n\n"
+                  "You should have received a copy of the GNU General Public License"
+                  "along with this program. If not, see <https://www.gnu.org/licenses/>."));
 
-void about::on_warrantyButton_clicked()
-{
-    QMessageBox *w = new QMessageBox();
-    w->setModal(true);
-    w->setWindowTitle(tr("WARRANTY"));
-    w->setText(tr("THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. "
-               "EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES "
-               "PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, "
-               "INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS "
-               "FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF "
-               "THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF "
-               "ALL NECESSARY SERVICING, REPAIR OR CORRECTION. "));
-    w->exec();
+    msgBox->exec();
 }

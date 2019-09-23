@@ -32,15 +32,12 @@ public:
 
 private slots:
     void on_githubLabel_clicked();
-
     void on_zhihuLabel_clicked();
-
-    void on_copyrightButton_clicked();
-
-    void on_warrantyButton_clicked();
+    void on_licenseButton_clicked();
 
 private:
     Ui::about *ui;
+    inline void dialogTranslate();
 };
 
 #endif // ABOUT_H
