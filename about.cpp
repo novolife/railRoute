@@ -76,34 +76,6 @@ about::~about()
     delete ui;
 }
 
-inline void about::dialogTranslate()
-{
-    QTranslator *translator = new QTranslator();
-    switch (langType)
-    {
-        case 0:
-        {
-            translator->load(":/res/i18n/translate_EN.qm");
-            qApp->installTranslator(translator);
-            break;
-        }
-
-        case 1:
-        {
-            translator->load(":/res/i18n/translate_ZHS.qm");
-            qApp->installTranslator(translator);
-            break;
-        }
-
-        case 2:
-        {
-            translator->load(":/res/i18n/translate_JP.qm");
-            qApp->installTranslator(translator);
-            break;
-        }
-    }
-}
-
 /**
  * @brief slot function of the github label, open the github repo
  */

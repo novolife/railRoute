@@ -42,32 +42,14 @@ DrawPad::DrawPad(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    if (QFile::exists("./prgCfg/setting.ini"))
-    {
-        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
-        this->setGeometry(pSetting->value("x").toInt(), pSetting->value("y").toInt(), pSetting->value("width").toInt(), pSetting->value("height").toInt());
-        langType = pSetting->value("languageType").toInt();
-    }
-    else
-    {
-        QDir *tempDir = new QDir();
-        if( (tempDir->exists("./prgCfg")) == false)
-        {
-            if ( (tempDir->mkdir("./prgCfg")) == false)
-            {
-                this->runningState = CFGINITFAIL;
-                QErrorMessage *errorTip = new QErrorMessage();
-                errorTip->setWindowTitle("ERROR");
-                errorTip->showMessage("Program Config Folder Initialize Failed!");
-                this->close();
-            }
-        }
-        QFile *tempFile = new QFile("./prgCfg/setting.ini");
-        tempFile->open(QIODevice::WriteOnly);
-        tempFile->close();
-        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
-    }
+    pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
 
+    this->setGeometry(pSetting->value("x").toInt(), pSetting->value("y").toInt(),
+                      pSetting->value("width").toInt(), pSetting->value("height").toInt());
+
+    langType = pSetting->value("languageType").toInt();
+
+    // translate the ui
     QTranslator *translator = new QTranslator();
     switch (langType)
     {
@@ -96,6 +78,7 @@ DrawPad::DrawPad(QWidget *parent) :
         }
     }
 
+    // Initialize the comboBox of scale
     sceneScaleCombo = new QComboBox();
     QStringList scales;
     scales << "50%" << "75%" << "100%" << "125%" << "150%" << "100%";
@@ -105,9 +88,12 @@ DrawPad::DrawPad(QWidget *parent) :
             this, &DrawPad::SceneScaleChanged);
     ui->toolBar->addWidget(sceneScaleCombo);
 
+    // Initiaize the QGraphicsScene
     scene = new DrawPadScene();
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     ui->graphicsView->setScene(scene);
+
+    // Initialize the icon the color select
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", Qt::black));
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", Qt::black));
     ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", Qt::black));
@@ -165,6 +151,9 @@ QIcon DrawPad::createColorToolButtonIcon(const QString &imageFile, QColor color)
     return QIcon(pixmap);
 }
 
+/**
+ * @brief save the location & size of drawpad
+ */
 void DrawPad::saveUISetting()
 {
     pSetting->setValue("x", this->frameGeometry().x());
@@ -172,21 +161,6 @@ void DrawPad::saveUISetting()
     pSetting->setValue("width", this->frameGeometry().width());
     pSetting->setValue("height", this->frameGeometry().height());
     pSetting->setValue("languageType", langType);
-}
-
-void DrawPad::saveErrorLog(int errState)
-{
-    QFile *errorLog = new QFile("log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
-    errorLog->open(QIODevice::WriteOnly);
-    switch (errState)
-    {
-        case CFGINITFAIL:
-        {
-            errorLog->write("Config File Initialize Failed.");
-            break;
-        }
-    }
-    errorLog->close();
 }
 
 /**
@@ -200,12 +174,6 @@ void DrawPad::closeEvent(QCloseEvent *event)
         case NORMAL:
         {
             saveUISetting();
-            break;
-        }
-
-        case CFGINITFAIL:
-        {
-            saveErrorLog(runningState);
             break;
         }
     }

@@ -65,7 +65,6 @@ private:
     inline void drawpadRetranslate();
     QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
     void saveUISetting();
-    void saveErrorLog(int errState);
     Ui::DrawPad *ui;
     QComboBox* sceneScaleCombo;
     DrawPadScene *scene;

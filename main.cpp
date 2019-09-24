@@ -30,11 +30,33 @@
 #include <QCommandLineOption>
 #include <QtWidgets>
 
+#define NORMAL 0
+#define CFGINITFAIL 1
+
 /**
- * @brief entry of the program,
+ * @brief saveErrorLog
+ * @param errState
+ */
+void saveErrorLog(int errState)
+{
+    QFile *errorLog = new QFile("log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
+    errorLog->open(QIODevice::WriteOnly);
+    switch (errState)
+    {
+        case CFGINITFAIL:
+        {
+            errorLog->write("Config File Initialize Failed.");
+            break;
+        }
+    }
+    errorLog->close();
+}
+
+/**
+ * @brief entry of the program, use config file to initialize the language Type
  * @param argc
  * @param argv
- * @return
+ * @return excuetion of the application
  */
 int main(int argc, char *argv[])
 {
@@ -51,7 +73,6 @@ int main(int argc, char *argv[])
         }
     }
 
-
     QLocale locale;
     if ( locale.language() == QLocale::Chinese )
     {
@@ -64,6 +85,42 @@ int main(int argc, char *argv[])
     else
     {
         langType = 0;
+    }
+
+    QSettings *pSetting;
+
+    if (QFile::exists("./prgCfg/setting.ini"))
+    {
+        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+        langType = pSetting->value("languageType").toInt();
+    }
+    else
+    {
+        QDir *tempDir = new QDir();
+        if( (tempDir->exists("./prgCfg")) == false)
+        {
+            if ( (tempDir->mkdir("./prgCfg")) == false)
+            {
+                saveErrorLog(CFGINITFAIL);
+                QErrorMessage *errorTip = new QErrorMessage();
+                errorTip->setWindowTitle("ERROR");
+                errorTip->showMessage("Program Config Folder Initialize Failed!");
+                return CFGINITFAIL;
+            }
+        }
+
+        QFile *tempFile = new QFile("./prgCfg/setting.ini");
+        if (tempFile->open(QIODevice::WriteOnly))
+        {
+            saveErrorLog(CFGINITFAIL);
+            QErrorMessage *errorTip = new QErrorMessage();
+            errorTip->setWindowTitle("ERROR");
+            errorTip->showMessage("Program Config Folder Initialize Failed!");
+            return CFGINITFAIL;
+        }
+
+        tempFile->close();
+        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
     }
 
     MainWindow* w = new MainWindow();

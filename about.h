@@ -38,7 +38,6 @@ private slots:
 
 private:
     Ui::about *ui;
-    inline void dialogTranslate();
 };
 
 #endif // ABOUT_H
