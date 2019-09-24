@@ -28,6 +28,7 @@
 #include <iostream>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <QtWidgets>
 
 /**
  * @brief entry of the program,
@@ -39,6 +40,17 @@ int main(int argc, char *argv[])
 {
     Q_INIT_RESOURCE(res);
     QApplication a(argc, argv);
+
+    QDir *tempLogDir = new QDir();
+
+    if (tempLogDir->exists("./Logs") == false)
+    {
+        if (tempLogDir->mkdir("./Logs") == false)
+        {
+            return 1;
+        }
+    }
+
 
     QLocale locale;
     if ( locale.language() == QLocale::Chinese )

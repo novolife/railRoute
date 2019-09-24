@@ -16,8 +16,12 @@
 #ifndef DRAWPAD_H
 #define DRAWPAD_H
 
+#define NORMAL 0
+#define CFGINITFAIL 1
+
 #include <QMainWindow>
 #include <QComboBox>
+#include <QtWidgets>
 #include "drawpadscene.h"
 
 namespace Ui {
@@ -30,7 +34,6 @@ class DrawPad : public QMainWindow
 
 public:
     explicit DrawPad(QWidget *parent = nullptr);
-    QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
     void SceneScaleChanged(const QString &scale);
     void ChangeComboBoxItem(qreal scale, int index);
     ~DrawPad();
@@ -60,9 +63,14 @@ private slots:
 private:
     inline void dialogTranslate();
     inline void drawpadRetranslate();
+    QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
+    void saveUISetting();
+    void saveErrorLog(int errState);
     Ui::DrawPad *ui;
     QComboBox* sceneScaleCombo;
     DrawPadScene *scene;
+    QSettings *pSetting;
+    int runningState = NORMAL;
 
 protected:
     void closeEvent(QCloseEvent *event);

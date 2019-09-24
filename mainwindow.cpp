@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    qDebug() << this->frameGeometry().width() << this->frameGeometry().height();
+
     QTranslator *translator = new QTranslator();
 
     switch (langType)

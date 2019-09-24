@@ -42,6 +42,32 @@ DrawPad::DrawPad(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    if (QFile::exists("./prgCfg/setting.ini"))
+    {
+        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+        this->setGeometry(pSetting->value("x").toInt(), pSetting->value("y").toInt(), pSetting->value("width").toInt(), pSetting->value("height").toInt());
+        langType = pSetting->value("languageType").toInt();
+    }
+    else
+    {
+        QDir *tempDir = new QDir();
+        if( (tempDir->exists("./prgCfg")) == false)
+        {
+            if ( (tempDir->mkdir("./prgCfg")) == false)
+            {
+                this->runningState = CFGINITFAIL;
+                QErrorMessage *errorTip = new QErrorMessage();
+                errorTip->setWindowTitle("ERROR");
+                errorTip->showMessage("Program Config Folder Initialize Failed!");
+                this->close();
+            }
+        }
+        QFile *tempFile = new QFile("./prgCfg/setting.ini");
+        tempFile->open(QIODevice::WriteOnly);
+        tempFile->close();
+        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+    }
+
     QTranslator *translator = new QTranslator();
     switch (langType)
     {
@@ -127,15 +153,40 @@ QIcon DrawPad::createColorToolButtonIcon(const QString &imageFile, QColor color)
 {
     QPixmap pixmap(50, 80);
     pixmap.fill(Qt::transparent);
-    QPainter painter(&pixmap);
+    QPainter *painter = new QPainter(&pixmap);
     QPixmap image(imageFile);
+
     // Draw icon centred horizontally on button.
     QRect target(4, 0, 42, 43);
     QRect source(0, 0, 42, 43);
-    painter.fillRect(QRect(0, 60, 50, 80), color);
-    painter.drawPixmap(target, image, source);
+    painter->fillRect(QRect(0, 60, 50, 80), color);
+    painter->drawPixmap(target, image, source);
 
     return QIcon(pixmap);
+}
+
+void DrawPad::saveUISetting()
+{
+    pSetting->setValue("x", this->frameGeometry().x());
+    pSetting->setValue("y", this->frameGeometry().y());
+    pSetting->setValue("width", this->frameGeometry().width());
+    pSetting->setValue("height", this->frameGeometry().height());
+    pSetting->setValue("languageType", langType);
+}
+
+void DrawPad::saveErrorLog(int errState)
+{
+    QFile *errorLog = new QFile("log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
+    errorLog->open(QIODevice::WriteOnly);
+    switch (errState)
+    {
+        case CFGINITFAIL:
+        {
+            errorLog->write("Config File Initialize Failed.");
+            break;
+        }
+    }
+    errorLog->close();
 }
 
 /**
@@ -144,7 +195,21 @@ QIcon DrawPad::createColorToolButtonIcon(const QString &imageFile, QColor color)
  */
 void DrawPad::closeEvent(QCloseEvent *event)
 {
-    qDebug() << "triggered close event";
+    switch(runningState)
+    {
+        case NORMAL:
+        {
+            saveUISetting();
+            break;
+        }
+
+        case CFGINITFAIL:
+        {
+            saveErrorLog(runningState);
+            break;
+        }
+    }
+
     event->accept();
 }
 
