@@ -81,11 +81,11 @@ about::~about()
  */
 void about::on_githubLabel_clicked()
 {
-    QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/Yu1Aragaki/railRoute")));
+    QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/novolife/railRoute")));
 }
 
 /**
- * @brief about::on_zhihuLabel_clicked
+ * @brief slot function of the zhihu label, open the zhihu article
  */
 void about::on_zhihuLabel_clicked()
 {
@@ -93,7 +93,7 @@ void about::on_zhihuLabel_clicked()
 }
 
 /**
- * @brief about::on_licenseButton_clicked
+ * @brief slot function of the LICENSE button, open the license dialog
  */
 void about::on_licenseButton_clicked()
 {

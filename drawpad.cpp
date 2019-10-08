@@ -42,12 +42,32 @@ DrawPad::DrawPad(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+    if (QFile::exists("./prgCfg/setting.ini") == false)
+    {
+        QFile *tempFile = new QFile("./prgCfg/setting.ini");
+        if (tempFile->open(QIODevice::WriteOnly) == false)
+        {
+            QErrorMessage *errorTip = new QErrorMessage();
+            errorTip->setWindowTitle("ERROR");
+            errorTip->showMessage("Program Config File Initialize Failed!");
+            errorTip->exec();
+            runningState = CFGINITFAIL;
+            this->close();
+        }
+        tempFile->close();
+        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+    }
+    else
+    {
+        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+        this->setGeometry(pSetting->value("x").toInt(), pSetting->value("y").toInt(),
+                          pSetting->value("width").toInt(), pSetting->value("height").toInt());
 
-    this->setGeometry(pSetting->value("x").toInt(), pSetting->value("y").toInt(),
-                      pSetting->value("width").toInt(), pSetting->value("height").toInt());
-
-    langType = pSetting->value("languageType").toInt();
+        if (pSetting->value("isMaximized") == 1)
+        {
+            this->setWindowState(Qt::WindowMaximized);
+        }
+    }
 
     // translate the ui
     QTranslator *translator = new QTranslator();
@@ -97,6 +117,11 @@ DrawPad::DrawPad(QWidget *parent) :
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", Qt::black));
     ui->actionLineColor->setIcon(createColorToolButtonIcon(":/res/img/opr/line.png", Qt::black));
     ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", Qt::black));
+
+    // Initialize the connection between drawpad and scene
+    connect(scene, &DrawPadScene::itemInserted, this, &DrawPad::itemInserted);
+    connect(scene, &DrawPadScene::itemSelected, this, &DrawPad::itemSelected);
+    connect(scene, &DrawPadScene::textInserted, this, &DrawPad::textInserted);
 }
 
 /**
@@ -156,12 +181,40 @@ QIcon DrawPad::createColorToolButtonIcon(const QString &imageFile, QColor color)
  */
 void DrawPad::saveUISetting()
 {
-    pSetting->setValue("x", this->frameGeometry().x());
-    pSetting->setValue("y", this->frameGeometry().y());
-    pSetting->setValue("width", this->frameGeometry().width());
-    pSetting->setValue("height", this->frameGeometry().height());
+    if (this->isMaximized())
+    {
+        pSetting->setValue("isMaximized", 1);
+        pSetting->setValue("x", ((qApp->desktop()->width() - 800) / 2) );
+        pSetting->setValue("y", ((qApp->desktop()->height() - 600) / 2) );
+        pSetting->setValue("width", 800);
+        pSetting->setValue("height", 600);
+    }
+    else
+    {
+        pSetting->setValue("isMaximized", 0);
+        pSetting->setValue("x", this->frameGeometry().x());
+        pSetting->setValue("y", this->frameGeometry().y());
+        pSetting->setValue("width", this->frameGeometry().width());
+        pSetting->setValue("height", this->frameGeometry().height());
+    }
     pSetting->setValue("languageType", langType);
 }
+
+void DrawPad::saveErrorLog(int errState)
+{
+    QFile *errorLog = new QFile("./Logs/log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
+    errorLog->open(QIODevice::WriteOnly);
+    switch (errState)
+    {
+        case CFGINITFAIL:
+        {
+            errorLog->write("Config File Initialize Failed.");
+            break;
+        }
+    }
+    errorLog->close();
+}
+
 
 /**
  * @brief deal with the close event, to make sure that the user's project has been saved.
@@ -169,11 +222,18 @@ void DrawPad::saveUISetting()
  */
 void DrawPad::closeEvent(QCloseEvent *event)
 {
+    qDebug() << qApp->desktop()->width() << qApp->desktop()->height();
     switch(runningState)
     {
         case NORMAL:
         {
             saveUISetting();
+            break;
+        }
+
+        case CFGINITFAIL:
+        {
+            saveErrorLog(CFGINITFAIL);
             break;
         }
     }
@@ -417,4 +477,9 @@ void DrawPad::on_actionTextColor_triggered()
     textColor = colorDialog->getColor(textColor);
     ui->actionTextColor->setIcon(createColorToolButtonIcon(":/res/img/opr/text.png", textColor));
     drawpadRetranslate();
+}
+
+void DrawPad::itemSelected(QGraphicsItem *item)
+{
+
 }

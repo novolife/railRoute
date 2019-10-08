@@ -34,6 +34,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    uint skipFlag = 0;
 
 private slots:
     void on_actionAbout_triggered();
@@ -46,6 +47,9 @@ private slots:
     void on_loadProject_clicked();
     void on_exitLabel_clicked();
     void on_actionJP_triggered();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H

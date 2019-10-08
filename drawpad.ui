@@ -73,7 +73,7 @@
            <x>0</x>
            <y>0</y>
            <width>69</width>
-           <height>506</height>
+           <height>484</height>
           </rect>
          </property>
          <attribute name="label">
@@ -89,7 +89,10 @@
            </rect>
           </property>
           <property name="toolTip">
-           <string>point</string>
+           <string>draw a node</string>
+          </property>
+          <property name="statusTip">
+           <string>draw a node</string>
           </property>
           <property name="styleSheet">
            <string notr="true"/>
@@ -125,6 +128,12 @@
             <width>60</width>
             <height>60</height>
            </rect>
+          </property>
+          <property name="toolTip">
+           <string>draw a line</string>
+          </property>
+          <property name="statusTip">
+           <string>draw a line</string>
           </property>
           <property name="text">
            <string/>
@@ -301,6 +310,7 @@
    <addaction name="actionTextColor"/>
    <addaction name="separator"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew">
    <property name="icon">
     <iconset resource="res.qrc">
@@ -310,6 +320,9 @@
     <string>New</string>
    </property>
    <property name="toolTip">
+    <string>Create a project</string>
+   </property>
+   <property name="statusTip">
     <string>Create a project</string>
    </property>
    <property name="shortcut">
@@ -327,6 +340,9 @@
    <property name="toolTip">
     <string>Save the project</string>
    </property>
+   <property name="statusTip">
+    <string>Save the project</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
@@ -337,6 +353,9 @@
      <normaloff>:/res/img/icon/open.ico</normaloff>:/res/img/icon/open.ico</iconset>
    </property>
    <property name="text">
+    <string>Open a project</string>
+   </property>
+   <property name="statusTip">
     <string>Open a project</string>
    </property>
    <property name="shortcut">
@@ -372,6 +391,9 @@
    <property name="toolTip">
     <string>Undo your action</string>
    </property>
+   <property name="statusTip">
+    <string>Undo your action</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Z</string>
    </property>
@@ -388,6 +410,9 @@
     <string>Redo</string>
    </property>
    <property name="toolTip">
+    <string>Redo your action</string>
+   </property>
+   <property name="statusTip">
     <string>Redo your action</string>
    </property>
    <property name="shortcut">
@@ -409,6 +434,9 @@
     <string>Delete</string>
    </property>
    <property name="toolTip">
+    <string>Delete the item</string>
+   </property>
+   <property name="statusTip">
     <string>Delete the item</string>
    </property>
    <property name="shortcut">
@@ -443,6 +471,9 @@
    <property name="toolTip">
     <string>select the color for nodes</string>
    </property>
+   <property name="statusTip">
+    <string>select the color for nodes</string>
+   </property>
   </action>
   <action name="actionLineColor">
    <property name="text">
@@ -451,12 +482,18 @@
    <property name="toolTip">
     <string>select the color for lines</string>
    </property>
+   <property name="statusTip">
+    <string>select the color for lines</string>
+   </property>
   </action>
   <action name="actionTextColor">
    <property name="text">
     <string>TextColor</string>
    </property>
    <property name="toolTip">
+    <string>select the color for texts</string>
+   </property>
+   <property name="statusTip">
     <string>select the color for texts</string>
    </property>
   </action>

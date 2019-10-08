@@ -28,6 +28,7 @@ CONFIG += \
 SOURCES += \
     clicklabel.cpp \
     common.cpp \
+    drawitem.cpp \
     drawpad.cpp \
     drawpadscene.cpp \
     drawpadview.cpp \
@@ -42,6 +43,7 @@ SOURCES += \
 HEADERS += \
     clicklabel.h \
     common.h \
+    drawitem.h \
     drawpad.h \
     drawpadscene.h \
     drawpadview.h \

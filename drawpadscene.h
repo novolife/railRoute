@@ -17,6 +17,7 @@
 #define DRAWPADSCENE_H
 
 #include <QGraphicsScene>
+#include "drawitem.h"
 
 class DrawPadScene : public QGraphicsScene
 {
@@ -39,11 +40,28 @@ public:
     void setItemColor(const QColor &color);
     void setFont(const QFont &font);
 
+public slots:
+    void setMode(Mode mode);
+    void setItemType(DrawItem::ItemType type);
+    void editorLostFocus(DrawItem *item);
+
+signals:
+    void itemInserted(DrawItem *item);
+    void textInserted(QGraphicsTextItem *item);
+    void itemSelected(QGraphicsItem *item);
+
+protected:
+    void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
+
 private:
     QColor myTextColor;
     QColor myItemColor;
     QColor myLineColor;
     QFont  myFont;
+    Mode   myMode;
+    DrawItem::ItemType myItemType;
 
 };
 

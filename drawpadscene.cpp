@@ -22,5 +22,34 @@
 DrawPadScene::DrawPadScene() :
     QGraphicsScene()
 {
+    myItemColor = Qt::white;
+    myTextColor = Qt::black;
+    myLineColor = Qt::black;
+    myMode      = MoveItem;
+    myItemType  = DrawItem::Node;
+}
 
+
+void DrawPadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
+{
+    if (mouseEvent->button() != Qt::LeftButton)
+        return;
+
+    DrawItem *item;
+    switch (myMode)
+    {
+        case InsertItem:
+        {
+            item = new DrawItem(myItemType);
+            item->setBrush(myItemColor);
+            addItem(item);
+            item->setPos(mouseEvent->scenePos());
+            emit itemInserted(item);
+            break;
+        }
+
+        default:
+            break;
+    }
+    QGraphicsScene::mousePressEvent(mouseEvent);
 }

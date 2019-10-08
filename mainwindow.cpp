@@ -88,6 +88,7 @@ MainWindow::~MainWindow()
  */
 void MainWindow::OpenNewProject()
 {
+    skipFlag = 1;
     DrawPad *dp = new DrawPad(nullptr);
     dp->show();
     this->close();
@@ -193,4 +194,14 @@ void MainWindow::on_loadProject_clicked()
 void MainWindow::on_exitLabel_clicked()
 {
     this->close();
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (skipFlag == 0)
+    {
+        QSettings *pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
+        pSetting->setValue("languageType", langType);
+    }
+    event->accept();
 }

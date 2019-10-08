@@ -37,9 +37,9 @@
  * @brief saveErrorLog
  * @param errState
  */
-void saveErrorLog(int errState)
+void saveErrLog(int errState)
 {
-    QFile *errorLog = new QFile("log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
+    QFile *errorLog = new QFile("./Logs/log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
     errorLog->open(QIODevice::WriteOnly);
     switch (errState)
     {
@@ -101,26 +101,14 @@ int main(int argc, char *argv[])
         {
             if ( (tempDir->mkdir("./prgCfg")) == false)
             {
-                saveErrorLog(CFGINITFAIL);
+                saveErrLog(CFGINITFAIL);
                 QErrorMessage *errorTip = new QErrorMessage();
                 errorTip->setWindowTitle("ERROR");
                 errorTip->showMessage("Program Config Folder Initialize Failed!");
+                errorTip->exec();
                 return CFGINITFAIL;
             }
         }
-
-        QFile *tempFile = new QFile("./prgCfg/setting.ini");
-        if (tempFile->open(QIODevice::WriteOnly))
-        {
-            saveErrorLog(CFGINITFAIL);
-            QErrorMessage *errorTip = new QErrorMessage();
-            errorTip->setWindowTitle("ERROR");
-            errorTip->showMessage("Program Config Folder Initialize Failed!");
-            return CFGINITFAIL;
-        }
-
-        tempFile->close();
-        pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
     }
 
     MainWindow* w = new MainWindow();
