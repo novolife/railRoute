@@ -270,8 +270,13 @@ background-color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedKingdom"/>
@@ -308,6 +313,19 @@ background-color: rgb(255, 255, 255);</string>
      <string>Help</string>
     </property>
     <widget class="QMenu" name="menuLanguage">
+     <property name="geometry">
+      <rect>
+       <x>506</x>
+       <y>127</y>
+       <width>120</width>
+       <height>116</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="locale">
       <locale language="English" country="UnitedKingdom"/>
      </property>
@@ -399,6 +417,10 @@ background-color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/img/icon/about.ico</normaloff>:/res/img/icon/about.ico</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>

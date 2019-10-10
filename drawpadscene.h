@@ -21,6 +21,7 @@
 
 class DrawPadScene : public QGraphicsScene
 {
+    Q_OBJECT
 public:
     enum Mode
     {
@@ -29,6 +30,7 @@ public:
         InsertText,
         MoveItem
     };
+    Q_ENUM(Mode)
 
     DrawPadScene();
     QFont font() const { return myFont; }
@@ -43,7 +45,7 @@ public:
 public slots:
     void setMode(Mode mode);
     void setItemType(DrawItem::ItemType type);
-    void editorLostFocus(DrawItem *item);
+    //void editorLostFocus(DrawItem *item);
 
 signals:
     void itemInserted(DrawItem *item);
@@ -52,8 +54,8 @@ signals:
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
+    //void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
+    //void mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
 
 private:
     QColor myTextColor;

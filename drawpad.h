@@ -61,9 +61,9 @@ private slots:
     void on_actionLineColor_triggered();
     void on_actionTextColor_triggered();
 
-    void itemSelected(QGraphicsItem *item);
+    //void itemSelected(QGraphicsItem *item);
     void itemInserted(DrawItem *item);
-    void textInserted(QGraphicsTextItem *item);
+    //void textInserted(QGraphicsTextItem *item);
 
 private:
     inline void dialogTranslate();
@@ -71,6 +71,7 @@ private:
     QIcon createColorToolButtonIcon(const QString &imageFile, QColor color);
     void saveUISetting();
     void saveErrorLog(int errState);
+
     Ui::DrawPad *ui;
     QComboBox* sceneScaleCombo;
     DrawPadScene *scene;

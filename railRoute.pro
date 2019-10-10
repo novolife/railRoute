@@ -34,8 +34,8 @@ SOURCES += \
     drawpadview.cpp \
     exlabel.cpp \
     licensedialog.cpp \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     about.cpp
@@ -49,7 +49,7 @@ HEADERS += \
     drawpadview.h \
     exlabel.h \
     licensedialog.h \
-        mainwindow.h \
+    mainwindow.h \
     mainwindow.h \
     about.h
 

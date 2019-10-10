@@ -16,11 +16,13 @@
 #ifndef DRAWITEM_H
 #define DRAWITEM_H
 
-#include <QObject>
 #include <QtWidgets>
 
-class DrawItem : public QGraphicsPolygonItem
+class DrawItem : public QObject, public QGraphicsPolygonItem
 {
+    //Q_GADGET
+    Q_OBJECT
+
 public:
 
     /**
@@ -31,6 +33,8 @@ public:
     {
         Node
     };
+
+    Q_ENUM(ItemType)
 
     DrawItem(ItemType itemType, QGraphicsItem *parent = nullptr);
 

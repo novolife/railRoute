@@ -29,6 +29,15 @@ DrawPadScene::DrawPadScene() :
     myItemType  = DrawItem::Node;
 }
 
+void DrawPadScene::setMode(Mode mode)
+{
+    myMode = mode;
+}
+
+void DrawPadScene::setItemType(DrawItem::ItemType type)
+{
+    myItemType = type;
+}
 
 void DrawPadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {

@@ -42,6 +42,9 @@ DrawPad::DrawPad(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->verticalLayout->setAlignment(Qt::AlignTop);
+
+    // Get settings
     if (QFile::exists("./prgCfg/setting.ini") == false)
     {
         QFile *tempFile = new QFile("./prgCfg/setting.ini");
@@ -120,8 +123,8 @@ DrawPad::DrawPad(QWidget *parent) :
 
     // Initialize the connection between drawpad and scene
     connect(scene, &DrawPadScene::itemInserted, this, &DrawPad::itemInserted);
-    connect(scene, &DrawPadScene::itemSelected, this, &DrawPad::itemSelected);
-    connect(scene, &DrawPadScene::textInserted, this, &DrawPad::textInserted);
+    //connect(scene, &DrawPadScene::itemSelected, this, &DrawPad::itemSelected);
+    //connect(scene, &DrawPadScene::textInserted, this, &DrawPad::textInserted);
 }
 
 /**
@@ -222,7 +225,6 @@ void DrawPad::saveErrorLog(int errState)
  */
 void DrawPad::closeEvent(QCloseEvent *event)
 {
-    qDebug() << qApp->desktop()->width() << qApp->desktop()->height();
     switch(runningState)
     {
         case NORMAL:
@@ -361,6 +363,9 @@ void DrawPad::on_nodeButton_clicked()
             ui->lineButton->setChecked(false);
         }
     }
+
+    scene->setMode(DrawPadScene::InsertItem);
+    scene->setItemType(DrawItem::Node);
 }
 
 /**
@@ -376,6 +381,8 @@ void DrawPad::on_lineButton_clicked()
             ui->nodeButton->setChecked(false);
         }
     }
+
+    scene->setMode(DrawPadScene::InsertLine);
 }
 
 /**
@@ -479,7 +486,15 @@ void DrawPad::on_actionTextColor_triggered()
     drawpadRetranslate();
 }
 
-void DrawPad::itemSelected(QGraphicsItem *item)
+/**
+ * @brief DrawPad::itemInserted
+ * @param item
+ */
+void DrawPad::itemInserted(DrawItem *item)
 {
-
+    if (item->type() == DrawItem::Node)
+    {
+        scene->setMode(DrawPadScene::Mode(0));
+        this->ui->nodeButton->setChecked(false);
+    }
 }
