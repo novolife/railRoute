@@ -55,7 +55,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>75</width>
+         <width>69</width>
          <height>474</height>
         </rect>
        </property>
@@ -287,6 +287,9 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="sizePolicy">
     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
      <horstretch>0</horstretch>
@@ -309,9 +312,11 @@
    <addaction name="actionLoad"/>
    <addaction name="actionSave"/>
    <addaction name="separator"/>
+   <addaction name="actionRun"/>
    <addaction name="actionUndo"/>
    <addaction name="actionRedo"/>
    <addaction name="actionDelete"/>
+   <addaction name="separator"/>
    <addaction name="separator"/>
    <addaction name="actionNodeColor"/>
    <addaction name="actionLineColor"/>
@@ -512,6 +517,27 @@
   <action name="actionJP">
    <property name="text">
     <string>日本語</string>
+   </property>
+  </action>
+  <action name="actionRun">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/img/icon/run.ico</normaloff>:/res/img/icon/run.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Run</string>
+   </property>
+   <property name="toolTip">
+    <string>calculate the route</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
   </action>
  </widget>

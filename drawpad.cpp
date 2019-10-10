@@ -155,6 +155,7 @@ void DrawPad::SceneScaleChanged(const QString &scale)
 {
     double newScale = scale.left(scale.indexOf("%")).toDouble() / 100.0;
     ui->graphicsView->Zoom(newScale);
+    this->ui->graphicsView->setScale(newScale);
 }
 
 /**
@@ -487,6 +488,14 @@ void DrawPad::on_actionTextColor_triggered()
 }
 
 /**
+ * @brief DrawPad::on_actionRun_triggered
+ */
+void DrawPad::on_actionRun_triggered()
+{
+
+}
+
+/**
  * @brief DrawPad::itemInserted
  * @param item
  */
@@ -494,7 +503,7 @@ void DrawPad::itemInserted(DrawItem *item)
 {
     if (item->type() == DrawItem::Node)
     {
-        scene->setMode(DrawPadScene::Mode(0));
+        scene->setMode(DrawPadScene::MoveItem);
         this->ui->nodeButton->setChecked(false);
     }
 }

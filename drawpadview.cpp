@@ -44,6 +44,11 @@ void DrawPadView::wheelEvent(QWheelEvent *event)
     }
 }
 
+void DrawPadView::setScale(qreal scale)
+{
+    m_scale = scale;
+}
+
 /**
  * @brief calculate the new scale if zoom in
  */
@@ -51,12 +56,12 @@ void DrawPadView::ZoomIn()
 {
     qreal temp_scale = m_scale + m_zoomDelta;
 
-    if (temp_scale - 0.01 > 2.0 || temp_scale + 0.01 < 0.25)
+    if (temp_scale - 0.01 > 4.0)
     {
         return;
     }
 
-    m_scale = temp_scale;
+    setScale(temp_scale);
     Zoom(temp_scale);
 }
 
@@ -67,12 +72,12 @@ void DrawPadView::ZoomOut()
 {
     qreal temp_scale = m_scale - m_zoomDelta;
 
-    if (temp_scale - 0.01 > 2.0 || temp_scale + 0.01 < 0.25)
+    if (temp_scale + 0.01 < 0.25)
     {
         return;
     }
 
-    m_scale = temp_scale;
+    setScale(temp_scale);
     Zoom(temp_scale);
 }
 

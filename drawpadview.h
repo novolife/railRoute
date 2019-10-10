@@ -29,8 +29,7 @@ class DrawPadView : public QGraphicsView
 
 public:
     DrawPadView(QWidget *parent = nullptr);
-
-    QWidget *padParent;
+    void setScale(qreal scale);
 
 public Q_SLOT:
     void ZoomIn();

@@ -48,15 +48,20 @@ private slots:
     void on_actionSave_triggered();
     void on_actionLoad_triggered();
     void on_actionExit_triggered();
+
+    void on_actionRun_triggered();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
     void on_actionDelete_triggered();
+
     void on_actionAbout_triggered();
     void on_actionEnglish_triggered();
     void on_actionZHS_triggered();
     void on_actionJP_triggered();
+
     void on_nodeButton_clicked();
     void on_lineButton_clicked();
+
     void on_actionNodeColor_triggered();
     void on_actionLineColor_triggered();
     void on_actionTextColor_triggered();
@@ -64,6 +69,8 @@ private slots:
     //void itemSelected(QGraphicsItem *item);
     void itemInserted(DrawItem *item);
     //void textInserted(QGraphicsTextItem *item);
+
+
 
 private:
     inline void dialogTranslate();
