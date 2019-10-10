@@ -34,7 +34,7 @@
    <string>railRoute - [Untitled]*</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
+   <iconset>
     <normaloff>:/res/img/logo/logo.ico</normaloff>:/res/img/logo/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -101,7 +101,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="res.qrc">
+             <iconset>
               <normaloff>:/res/img/icon/node.ico</normaloff>:/res/img/icon/node.ico</iconset>
             </property>
             <property name="iconSize">
@@ -163,7 +163,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="res.qrc">
+             <iconset>
               <normaloff>:/res/img/icon/line.ico</normaloff>:/res/img/icon/line.ico</iconset>
             </property>
             <property name="iconSize">
@@ -326,7 +326,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/new.ico</normaloff>:/res/img/icon/new.ico</iconset>
    </property>
    <property name="text">
@@ -344,7 +344,7 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/save.ico</normaloff>:/res/img/icon/save.ico</iconset>
    </property>
    <property name="text">
@@ -362,7 +362,7 @@
   </action>
   <action name="actionLoad">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/open.ico</normaloff>:/res/img/icon/open.ico</iconset>
    </property>
    <property name="text">
@@ -377,7 +377,7 @@
   </action>
   <action name="actionExit">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/exit.ico</normaloff>:/res/img/icon/exit.ico</iconset>
    </property>
    <property name="text">
@@ -395,7 +395,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/undo.ico</normaloff>:/res/img/icon/undo.ico</iconset>
    </property>
    <property name="text">
@@ -416,7 +416,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/redo.ico</normaloff>:/res/img/icon/redo.ico</iconset>
    </property>
    <property name="text">
@@ -440,7 +440,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/delete.ico</normaloff>:/res/img/icon/delete.ico</iconset>
    </property>
    <property name="text">
@@ -458,7 +458,7 @@
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/about.ico</normaloff>:/res/img/icon/about.ico</iconset>
    </property>
    <property name="text">
@@ -527,7 +527,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/res/img/icon/run.ico</normaloff>:/res/img/icon/run.ico</iconset>
    </property>
    <property name="text">
@@ -548,8 +548,6 @@
    <header>drawpadview.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

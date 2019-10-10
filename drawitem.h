@@ -2,8 +2,9 @@
 #define DRAWITEM_H
 
 #include <QtWidgets>
+#include "nodeitem.h"
 
-class DrawItem : public QGraphicsPolygonItem
+class DrawItem : public QGraphicsItemGroup
 {
     Q_GADGET
 
@@ -14,11 +15,13 @@ public:
     };
     Q_ENUM(ItemType)
 
-    DrawItem(ItemType itemType, QGraphicsItem *parent = nullptr);
+    DrawItem(ItemType itemType, QColor itemColor);
+    ItemType type() {return myItemType;}
 
 private:
     ItemType myItemType;
-    QPolygonF myPolygon;
+    NodeItem *nodeChild;
+    QGraphicsSimpleTextItem *myText;
 };
 
 #endif // DRAWITEM_H

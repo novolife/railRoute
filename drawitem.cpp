@@ -1,22 +1,28 @@
 #include "drawitem.h"
 
-DrawItem::DrawItem(ItemType itemType, QGraphicsItem *parent)
-    : QGraphicsPolygonItem(parent)
+DrawItem::DrawItem(ItemType itemType, QColor itemColor)
+    : QGraphicsItemGroup()
 {
     myItemType = itemType;
 
-    QPainterPath *path = new QPainterPath();
     switch(myItemType)
     {
         case Node:
         {
-            path->addEllipse(-12, -12, 24, 24);
-            myPolygon = path->toFillPolygon();
+            nodeChild = new NodeItem(this);
+            nodeChild->setPen(QPen(QBrush(itemColor), 6));
         }
     }
 
-    setPolygon(myPolygon);
+    myText = new QGraphicsSimpleTextItem("bbb");
+
+    myText->setPos(nodeChild->pos().x(), nodeChild->pos().y()+nodeChild->boundingRect().height());
+
+    this->addToGroup(nodeChild);
+    this->addToGroup(myText);
+    this->setHandlesChildEvents(false);
+
     setFlag(QGraphicsItem::ItemIsMovable, true);
-    setFlag(QGraphicsItem::ItemIsSelectable, true);
-    setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+    //setFlag(QGraphicsItem::ItemIsSelectable, true);
+    //setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 }

@@ -104,7 +104,7 @@ DrawPad::DrawPad(QWidget *parent) :
     // Initialize the comboBox of scale
     sceneScaleCombo = new QComboBox();
     QStringList scales;
-    scales << "50%" << "75%" << "100%" << "125%" << "150%" << "100%";
+    scales << "50%" << "75%" << "100%" << "200%" << "400%" << "100%";
     sceneScaleCombo->addItems(scales);
     sceneScaleCombo->setCurrentIndex(2);
     connect(sceneScaleCombo, QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
@@ -196,10 +196,10 @@ void DrawPad::saveUISetting()
     else
     {
         pSetting->setValue("isMaximized", 0);
-        pSetting->setValue("x", this->frameGeometry().x());
-        pSetting->setValue("y", this->frameGeometry().y());
-        pSetting->setValue("width", this->frameGeometry().width());
-        pSetting->setValue("height", this->frameGeometry().height());
+        pSetting->setValue("x", this->geometry().x());
+        pSetting->setValue("y", this->geometry().y());
+        pSetting->setValue("width", this->geometry().width());
+        pSetting->setValue("height", this->geometry().height());
     }
     pSetting->setValue("languageType", langType);
 }

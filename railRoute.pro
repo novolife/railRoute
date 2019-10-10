@@ -38,7 +38,8 @@ SOURCES += \
     mainwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    about.cpp
+    about.cpp \
+    nodeitem.cpp
 
 HEADERS += \
     clicklabel.h \
@@ -51,7 +52,8 @@ HEADERS += \
     licensedialog.h \
     mainwindow.h \
     mainwindow.h \
-    about.h
+    about.h \
+    nodeitem.h
 
 FORMS += \
     drawpad.ui \

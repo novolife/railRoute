@@ -44,13 +44,14 @@ void DrawPadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
     if (mouseEvent->button() != Qt::LeftButton)
         return;
 
-    DrawItem *item;
     switch (myMode)
     {
         case InsertItem:
         {
-            item = new DrawItem(myItemType);
-            item->setPen(QPen(QBrush(myItemColor), 6));
+            DrawItem *item = new DrawItem(myItemType, myItemColor);
+            item->setFlag(QGraphicsItem::ItemIsMovable, true);
+            item->setFlag(QGraphicsItem::ItemIsSelectable, true);
+            item->setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
             addItem(item);
             item->setPos(mouseEvent->scenePos());
             emit itemInserted(item);
