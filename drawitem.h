@@ -23,22 +23,19 @@ public:
 
     DrawItem(ItemType itemType, QColor itemColor);
     ItemType type() {return myItemType;}
+    NodeItem *NodeChild() {return nodeChild;}
+    QGraphicsTextItem *TextChild() {return textChild;}
 
 private slots:
-    void slotTimerTimeOut();
+    void on_textchild_contentschanged();
 
 private:
-    //using QGraphicsItem::mousePressEvent;
-    //using QGraphicsItem::mouseDoubleClickEvent;
     using QGraphicsItemGroup::type; // avoid virtual func overload warning
     ItemType myItemType;
     NodeItem *nodeChild;
-    QGraphicsSimpleTextItem *TextChild;
-    QTimer *m_cTimer;
+    QGraphicsTextItem *textChild;
+    QTimer *myTimer;
 
-protected:
-    void mousePressEvent(QMouseEvent *e);
-    void mouseDoubleClickEvent(QMouseEvent *event);
 };
 
 #endif // DRAWITEM_H
