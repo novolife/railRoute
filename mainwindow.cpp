@@ -100,7 +100,8 @@ void MainWindow::OpenNewProject()
  */
 void MainWindow::LoadProject()
 {
-
+    QString prjName = QFileDialog().getOpenFileName();
+    QFile* prjFile = new QFile(prjName);
 }
 
 /**

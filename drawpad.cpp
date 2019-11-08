@@ -204,6 +204,10 @@ void DrawPad::saveUISetting()
     pSetting->setValue("languageType", langType);
 }
 
+/**
+ * @brief DrawPad::saveErrorLog
+ * @param errState
+ */
 void DrawPad::saveErrorLog(int errState)
 {
     QFile *errorLog = new QFile("./Logs/log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
@@ -420,6 +424,9 @@ inline void DrawPad::dialogTranslate()
     }
 }
 
+/**
+ * @brief DrawPad::drawpadRetranslate
+ */
 inline void DrawPad::drawpadRetranslate()
 {
     QTranslator *translator = new QTranslator();
@@ -457,10 +464,11 @@ inline void DrawPad::drawpadRetranslate()
 void DrawPad::on_actionNodeColor_triggered()
 {
     QColorDialog *colorDialog = new QColorDialog();
-    dialogTranslate();
+    //dialogTranslate();
     nodeColor = colorDialog->getColor(nodeColor, this);
     ui->actionNodeColor->setIcon(createColorToolButtonIcon(":/res/img/opr/node.png", nodeColor));
-    drawpadRetranslate();
+    //drawpadRetranslate();
+    scene->setItemColor(nodeColor);
 }
 
 /**

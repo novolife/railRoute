@@ -33,7 +33,6 @@ public:
     Q_ENUM(Mode)
 
     DrawPadScene();
-    //bool eventFilter(QObject *watched, QEvent *event) override;
 
     QFont font() const { return myFont; }
     QColor textColor() const { return myTextColor; }

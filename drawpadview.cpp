@@ -44,6 +44,10 @@ void DrawPadView::wheelEvent(QWheelEvent *event)
     }
 }
 
+/**
+ * @brief wrapper for private member m_scale
+ * @param scale
+ */
 void DrawPadView::setScale(qreal scale)
 {
     m_scale = scale;

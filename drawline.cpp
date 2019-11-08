@@ -1,6 +1,28 @@
-#include "drawarrow.h"
+/**
+ *    A program which can calculate a longest path of a rail system.
+ *    Copyright (C) 2019  J. HUANG
+ *
+ *    This program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ */
 
-DrawArrow::DrawArrow(DrawItem *startItem, DrawItem *endItem, QGraphicsItem *parent)
+
+#include "drawline.h"
+
+/**
+ * @brief DrawLine::DrawLine
+ * @param startItem
+ * @param endItem
+ * @param parent
+ */
+DrawLine::DrawLine(DrawItem *startItem, DrawItem *endItem, QGraphicsItem *parent)
     : QGraphicsLineItem(parent)
 {
     myStartItem = startItem;
@@ -10,7 +32,11 @@ DrawArrow::DrawArrow(DrawItem *startItem, DrawItem *endItem, QGraphicsItem *pare
     setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
-QRectF DrawArrow::boundingRect() const
+/**
+ * @brief DrawLine::boundingRect
+ * @return
+ */
+QRectF DrawLine::boundingRect() const
 {
     qreal extra = (pen().width() + 20) / 2.0;
 
@@ -20,13 +46,20 @@ QRectF DrawArrow::boundingRect() const
         .adjusted(-extra, -extra, extra, extra);
 }
 
-void DrawArrow::updatePosition()
+/**
+ * @brief DrawLine::updatePosition
+ */
+void DrawLine::updatePosition()
 {
     QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
     setLine(line);
 }
 
-void DrawArrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+/**
+ * @brief DrawLine::paint
+ * @param painter
+ */
+void DrawLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     if (myStartItem->collidesWithItem(myEndItem))
         return;

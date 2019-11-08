@@ -28,39 +28,46 @@ DrawPadScene::DrawPadScene() :
     myMode      = MoveItem;
     myItemType  = DrawItem::Node;
 }
-/*
-bool DrawPadScene::eventFilter(QObject *watched, QEvent *event)
-{
-    if (event->type() == QGraphicsSceneEvent::MouseButtonPress)
-    {
 
-    }
-}
-*/
+/**
+ * @brief DrawPadScene::setMode
+ * @param mode
+ */
 void DrawPadScene::setMode(Mode mode)
 {
     myMode = mode;
 }
 
+/**
+ * @brief DrawPadScene::setItemType
+ * @param type
+ */
 void DrawPadScene::setItemType(DrawItem::ItemType type)
 {
     myItemType = type;
 }
 
+/**
+ * @brief DrawPadScene::setItemColor
+ * @param color
+ */
+void DrawPadScene::setItemColor(const QColor &color)
+{
+    Q_UNUSED(color)
+    qDebug() << selectedItems().first();
+}
+
+/**
+ * @brief DrawPadScene::mousePressEvent
+ * @param mouseEvent
+ */
 void DrawPadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
     if (mouseEvent->button() != Qt::LeftButton)
         return;
 
-
-    if (itemAt(mouseEvent->screenPos(), QTransform()))
+    switch (myMode)
     {
-        QGraphicsScene::mousePressEvent(mouseEvent);
-    }
-    else
-    {
-        switch (myMode)
-        {
         case InsertItem:
         {
             DrawItem *item = new DrawItem(myItemType, myItemColor);
@@ -77,7 +84,7 @@ void DrawPadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
         default:
             break;
-        }
     }
+
     QGraphicsScene::mousePressEvent(mouseEvent);
 }

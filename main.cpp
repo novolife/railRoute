@@ -39,11 +39,12 @@
  */
 void saveErrLog(int errState)
 {
-    QFile *errorLog = new QFile("./Logs/log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss"));
+    //save error log like "log-error-2019-08-10-11-45-14.txt"
+    QFile *errorLog = new QFile("./Logs/log-error-" + QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss") + ".txt");
     errorLog->open(QIODevice::WriteOnly);
     switch (errState)
     {
-        case CFGINITFAIL:
+        case CFGINITFAIL: //config initialize failed
         {
             errorLog->write("Config File Initialize Failed.");
             break;
@@ -54,8 +55,8 @@ void saveErrLog(int errState)
 
 /**
  * @brief entry of the program, use config file to initialize the language Type
- * @param argc
- * @param argv
+ * @param argc @unused
+ * @param argv @unused
  * @return excuetion of the application
  */
 int main(int argc, char *argv[])
@@ -65,6 +66,7 @@ int main(int argc, char *argv[])
 
     QDir *tempLogDir = new QDir();
 
+    //create folder /Logs if not exist
     if (tempLogDir->exists("./Logs") == false)
     {
         if (tempLogDir->mkdir("./Logs") == false)
@@ -73,6 +75,7 @@ int main(int argc, char *argv[])
         }
     }
 
+    // get computer language
     QLocale locale;
     if ( locale.language() == QLocale::Chinese )
     {
@@ -89,6 +92,7 @@ int main(int argc, char *argv[])
 
     QSettings *pSetting;
 
+    //get language type if config file exists, else create folder /prgCfg
     if (QFile::exists("./prgCfg/setting.ini"))
     {
         pSetting = new QSettings("./prgCfg/setting.ini", QSettings::IniFormat);
@@ -99,6 +103,7 @@ int main(int argc, char *argv[])
         QDir *tempDir = new QDir();
         if( (tempDir->exists("./prgCfg")) == false)
         {
+            //save error log and exit if create failed
             if ( (tempDir->mkdir("./prgCfg")) == false)
             {
                 saveErrLog(CFGINITFAIL);

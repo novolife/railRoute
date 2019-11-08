@@ -28,8 +28,8 @@ CONFIG += \
 SOURCES += \
     clicklabel.cpp \
     common.cpp \
-    drawarrow.cpp \
     drawitem.cpp \
+    drawline.cpp \
     drawpad.cpp \
     drawpadscene.cpp \
     drawpadview.cpp \
@@ -40,13 +40,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     about.cpp \
-    nodeitem.cpp
+    nodeitem.cpp \
+    project.cpp
 
 HEADERS += \
     clicklabel.h \
     common.h \
-    drawarrow.h \
     drawitem.h \
+    drawline.h \
     drawpad.h \
     drawpadscene.h \
     drawpadview.h \
@@ -55,7 +56,8 @@ HEADERS += \
     mainwindow.h \
     mainwindow.h \
     about.h \
-    nodeitem.h
+    nodeitem.h \
+    project.h
 
 FORMS += \
     drawpad.ui \
