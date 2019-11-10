@@ -21,19 +21,7 @@
  * @date    2019/7/16
  */
 
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include "about.h"
-#include "drawpad.h"
-#include "common.h"
-
-#include <QAction>
-#include <QWidget>
-#include <QApplication>
-#include <QTranslator>
-#include <QPushButton>
-#include <QLabel>
-#include <QDebug>
 
 /**
  * @brief constructor of MainWindow

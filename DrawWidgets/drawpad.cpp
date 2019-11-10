@@ -25,8 +25,8 @@
 
 #include "drawpad.h"
 #include "ui_drawpad.h"
-#include "about.h"
-#include "common.h"
+#include "../CtrlWidgets/about.h"
+#include "../Algorithm/common.h"
 #include "drawpadscene.h"
 #include "drawpadview.h"
 

@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QtWidgets>
-#include "common.h"
+#include "../Algorithm/common.h"
 
 namespace Ui {
 class licenseDialog;

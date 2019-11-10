@@ -16,8 +16,13 @@
 #ifndef ABOUT_H
 #define ABOUT_H
 
-#include <QWidget>
+#include <QtWidgets>
 #include "licensedialog.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include "../DrawWidgets/drawpad.h"
+#include "../Algorithm/common.h"
+
 
 namespace Ui {
 class about;

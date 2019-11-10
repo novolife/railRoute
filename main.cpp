@@ -19,8 +19,8 @@
  *
  */
 
-#include "mainwindow.h"
-#include "common.h"
+#include "CtrlWidgets/mainwindow.h"
+#include "Algorithm/common.h"
 
 #include <QApplication>
 #include <QDebug>

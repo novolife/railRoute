@@ -3,8 +3,6 @@
 
 #include <QtWidgets>
 
-template<class QVector>
-
 class Project
 {
 public:
@@ -12,7 +10,6 @@ public:
 
 private:
     QString prjName;
-    QVector *prjNodes;
 };
 
 #endif // PROJECT_H

@@ -24,7 +24,7 @@
 
 #include "about.h"
 #include "ui_about.h"
-#include "common.h"
+#include "../Algorithm/common.h"
 
 #include <QtWidgets>
 #include <QDesktopServices>

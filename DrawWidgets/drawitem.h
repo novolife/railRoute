@@ -20,7 +20,7 @@
 #include <QtWidgets>
 #include <QObject>
 #include "nodeitem.h"
-#include "common.h"
+#include "../Algorithm/common.h"
 
 class DrawItem : public QObject, public QGraphicsItemGroup
 {

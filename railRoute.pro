@@ -25,45 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += \
     c++11
 
+include (./DrawWidgets/drawwidgets.pri)
+include (./CtrlWidgets/ctrlwidgets.pri)
+include (./Algorithm/algorithm.pri)
+
 SOURCES += \
-    clicklabel.cpp \
-    common.cpp \
-    drawitem.cpp \
-    drawline.cpp \
-    drawpad.cpp \
-    drawpadscene.cpp \
-    drawpadview.cpp \
-    exlabel.cpp \
-    licensedialog.cpp \
     main.cpp \
-    mainwindow.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    about.cpp \
-    nodeitem.cpp \
-    project.cpp
-
-HEADERS += \
-    clicklabel.h \
-    common.h \
-    drawitem.h \
-    drawline.h \
-    drawpad.h \
-    drawpadscene.h \
-    drawpadview.h \
-    exlabel.h \
-    licensedialog.h \
-    mainwindow.h \
-    mainwindow.h \
-    about.h \
-    nodeitem.h \
-    project.h
-
-FORMS += \
-    drawpad.ui \
-    licensedialog.ui \
-    mainwindow.ui \
-    about.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
